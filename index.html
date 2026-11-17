@@ -1,0 +1,2827 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Misteri Sistem Ekskresi Manusia • MPI IPA/Biologi Kelas VII</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Fredoka untuk sentuhan edukatif modern -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Font Awesome untuk Ikon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              DEFAULT: '#102C46',
+              dark: '#091B2C',
+              light: '#183E61',
+              card: '#153654'
+            },
+            turquoise: {
+              DEFAULT: '#13B8A6',
+              dark: '#0E9384',
+              light: '#2DD4BF'
+            },
+            gold: {
+              DEFAULT: '#F4B942',
+              dark: '#D99B26',
+              light: '#FCD34D'
+            },
+            ice: {
+              DEFAULT: '#E9F4F8',
+              dark: '#D4E8F0',
+              light: '#F5FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Fredoka', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Gaya Dasar & Animasi Modern Science Adventure */
+    body {
+      background-color: #102C46;
+      color: #E9F4F8;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .font-display {
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    /* Pola Latar Sains Futuristik */
+    .science-grid-bg {
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(19, 184, 166, 0.14) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(244, 185, 66, 0.10) 0%, transparent 40%),
+        linear-gradient(rgba(233, 244, 248, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(233, 244, 248, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+    }
+
+    /* Animasi Transisi Halaman */
+    .fade-in {
+      animation: fadeIn 0.35s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Animasi Mengambang Halus */
+    .float-anim {
+      animation: floatAnim 4s ease-in-out infinite;
+    }
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Animasi Denyut Organ */
+    .pulse-organ {
+      transition: transform 0.25s ease, filter 0.25s ease;
+      cursor: pointer;
+    }
+    .pulse-organ:hover {
+      transform: scale(1.06);
+      filter: drop-shadow(0 0 10px rgba(19, 184, 166, 0.8));
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #091B2C;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #13B8A6;
+      border-radius: 9999px;
+    }
+
+    /* Pengaturan Cetak LKPD (@media print) */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      #lkpd-printable-area {
+        background: #ffffff !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      #lkpd-printable-area input,
+      #lkpd-printable-area textarea {
+        border: 1px solid #444 !important;
+        background: #fff !important;
+        color: #000 !important;
+      }
+    }
+  </style>
+</head>
+<body class="science-grid-bg min-h-screen flex flex-col selection:bg-turquoise selection:text-navy-dark">
+
+  <!-- TOAST NOTIFICATION (Pengganti alert) -->
+  <div id="toast-box" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-navy-light border-2 border-turquoise text-ice px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 fade-in no-print">
+    <i id="toast-icon" class="fa-solid fa-circle-check text-turquoise text-xl"></i>
+    <span id="toast-msg" class="text-sm font-medium">Pesan notifikasi</span>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 1. HALAMAN PEMBUKA (SPLASH SCREEN)                                    -->
+  <!-- ===================================================================== -->
+  <section id="splash-screen" class="min-h-screen flex items-center justify-center p-4 sm:p-8 fade-in">
+    <div class="max-w-5xl w-full bg-navy-card/90 backdrop-blur-md border-2 border-turquoise/40 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+      <!-- Dekorasi Sudut -->
+      <div class="absolute -top-16 -right-16 w-48 h-48 bg-turquoise/10 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-gold/10 rounded-full blur-2xl pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Kolom Kiri: Identitas & Judul -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-5">
+          <div class="inline-flex items-center gap-2 bg-navy-dark/80 border border-turquoise/50 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-turquoise">
+            <i class="fa-solid fa-atom fa-spin"></i>
+            <span>MEDIA PEMBELAJARAN INTERAKTIF • IPA/BIOLOGI KELAS VII FASE D</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            MISTERI <span class="text-turquoise">SISTEM EKSKRESI</span> MANUSIA
+          </h1>
+
+          <p class="text-lg sm:text-xl font-display text-gold font-semibold">
+            “Jelajahi, Simulasikan, dan Temukan!”
+          </p>
+
+          <p class="text-ice/85 text-sm sm:text-base leading-relaxed">
+            Selamat datang di Laboratorium Sains Digital! Mari ungkap rahasia bagaimana tubuh manusia menyaring darah, membuang zat sisa metabolisme, dan menjaga keseimbangan cairan tubuh.
+          </p>
+
+          <!-- Kartu Identitas Penyusun -->
+          <div class="bg-navy-dark/70 border border-ice/15 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-11 h-11 rounded-xl bg-turquoise/20 border border-turquoise flex items-center justify-center text-turquoise font-bold text-lg">
+                <i class="fa-solid fa-user-graduate"></i>
+              </div>
+              <div class="text-left">
+                <p class="text-xs text-ice/60 uppercase tracking-wider">Disusun oleh</p>
+                <p class="font-bold text-white text-sm sm:text-base">Rahmatina, S.Ei.</p>
+                <p class="text-xs text-turquoise font-medium">SMAP 2 Kalianda</p>
+              </div>
+            </div>
+            <div class="text-xs text-ice/70 bg-navy-light/60 px-3 py-1.5 rounded-xl border border-ice/10">
+              <i class="fa-solid fa-volume-high text-gold mr-1"></i> Dilengkapi Narasi Suara ID
+            </div>
+          </div>
+
+          <!-- Tombol Mulai Belajar -->
+          <div class="pt-2 flex flex-col sm:flex-row items-center gap-4">
+            <button onclick="startLearningApp()" class="w-full sm:w-auto px-8 py-4 bg-turquoise hover:bg-turquoise-dark text-navy-dark font-display font-bold text-lg rounded-2xl shadow-lg shadow-turquoise/30 transition transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-3 cursor-pointer">
+              <i class="fa-solid fa-rocket"></i>
+              <span>MULAI BELAJAR</span>
+            </button>
+            <span class="text-xs text-ice/60 italic">Klik tombol untuk mengaktifkan audio interaktif</span>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Ilustrasi SVG Anatomi Sistem Ekskresi Manusia -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-64 sm:w-72 bg-navy-dark/80 border-2 border-turquoise/30 rounded-3xl p-4 shadow-inner float-anim">
+            <div class="text-center text-xs font-semibold text-turquoise mb-2 tracking-wider">PEMINDAI ANATOMI EKSKRESI</div>
+            <svg viewBox="0 0 260 340" class="w-full h-auto" aria-label="Ilustrasi Anatomi Sistem Ekskresi Manusia">
+              <!-- Siluet Tubuh Manusia -->
+              <defs>
+                <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1E4D78" stop-opacity="0.7" />
+                  <stop offset="100%" stop-color="#0E2942" stop-opacity="0.9" />
+                </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <!-- Kepala & Leher -->
+              <circle cx="130" cy="42" r="26" fill="url(#bodyGrad)" stroke="#13B8A6" stroke-width="2" />
+              <rect x="118" y="66" width="24" height="22" rx="6" fill="url(#bodyGrad)" />
+              <!-- Torso & Bahu -->
+              <path d="M68,102 C68,86 92,82 130,82 C168,82 192,86 192,102 L184,235 C183,248 172,256 158,256 L102,256 C88,256 77,248 76,235 Z" fill="url(#bodyGrad)" stroke="#13B8A6" stroke-width="2" />
+              <!-- Lengan -->
+              <path d="M68,104 L46,195 C44,203 52,208 58,202 L74,142" fill="url(#bodyGrad)" stroke="#13B8A6" stroke-width="1.5" />
+              <path d="M192,104 L214,195 C216,203 208,208 202,202 L186,142" fill="url(#bodyGrad)" stroke="#13B8A6" stroke-width="1.5" />
+
+              <!-- Trakea & Paru-Paru (Ekskresi CO2 & H2O) -->
+              <rect x="126" y="76" width="8" height="32" rx="3" fill="#7DD3FC" />
+              <path d="M124,104 C102,102 86,120 88,148 C90,162 106,164 123,158 Z" fill="#38BDF8" fill-opacity="0.85" stroke="#BAE6FD" stroke-width="1.5" />
+              <path d="M136,104 C158,102 174,120 172,148 C170,162 154,164 137,158 Z" fill="#38BDF8" fill-opacity="0.85" stroke="#BAE6FD" stroke-width="1.5" />
+
+              <!-- Hati / Liver (Ekskresi Empedu & Urea) -->
+              <path d="M92,165 C112,160 144,164 148,176 C149,184 125,193 96,190 C89,188 87,172 92,165 Z" fill="#D97706" stroke="#FCD34D" stroke-width="1.5" />
+
+              <!-- Sepasang Ginjal (Ekskresi Urine) -->
+              <path d="M106,196 C94,196 90,218 104,222 C111,223 113,214 111,209 C113,204 111,196 106,196 Z" fill="#EF4444" stroke="#FCA5A5" stroke-width="1.5" filter="url(#glow)" />
+              <path d="M154,196 C166,196 170,218 156,222 C149,223 147,214 149,209 C147,204 149,196 154,196 Z" fill="#EF4444" stroke="#FCA5A5" stroke-width="1.5" filter="url(#glow)" />
+
+              <!-- Ureter & Kandung Kemih -->
+              <path d="M108,215 Q116,245 125,264" fill="none" stroke="#F4B942" stroke-width="2.5" />
+              <path d="M152,215 Q144,245 135,264" fill="none" stroke="#F4B942" stroke-width="2.5" />
+              <ellipse cx="130" cy="272" rx="13" ry="11" fill="#F4B942" stroke="#FEF08A" stroke-width="1.5" />
+
+              <!-- Indikator Pori Kulit (Keringat) -->
+              <circle cx="54" cy="155" r="3" fill="#2DD4BF" />
+              <circle cx="206" cy="155" r="3" fill="#2DD4BF" />
+              <line x1="25" y1="155" x2="51" y2="155" stroke="#2DD4BF" stroke-dasharray="2,2" />
+              <text x="8" y="150" fill="#2DD4BF" font-size="8" font-weight="bold">KULIT</text>
+
+              <line x1="172" y1="125" x2="215" y2="115" stroke="#7DD3FC" stroke-dasharray="2,2" />
+              <text x="192" y="110" fill="#7DD3FC" font-size="8" font-weight="bold">PARU-PARU</text>
+
+              <line x1="50" y1="180" x2="90" y2="178" stroke="#FCD34D" stroke-dasharray="2,2" />
+              <text x="14" y="182" fill="#FCD34D" font-size="8" font-weight="bold">HATI</text>
+
+              <line x1="168" y1="210" x2="212" y2="215" stroke="#FCA5A5" stroke-dasharray="2,2" />
+              <text x="195" y="227" fill="#FCA5A5" font-size="8" font-weight="bold">GINJAL</text>
+            </svg>
+            <div class="mt-2 flex justify-between text-[11px] text-ice/75 px-2">
+              <span><i class="fa-solid fa-shield-halved text-turquoise"></i> Status: Siap Eksplorasi</span>
+              <span class="text-gold font-bold">4 Organ Utama</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- KONTENER UTAMA APLIKASI (MUNCUL SETELAH KLIK MULAI BELAJAR)           -->
+  <!-- ===================================================================== -->
+  <div id="main-app" class="hidden flex-1 flex flex-col">
+
+    <!-- TOP NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 bg-navy-dark/95 backdrop-blur-md border-b border-turquoise/30 px-4 py-3 shadow-lg no-print">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+        <!-- Kiri: Brand & Tombol Home -->
+        <div class="flex items-center gap-3">
+          <button onclick="navigateTo('home')" class="bg-turquoise hover:bg-turquoise-dark text-navy-dark font-bold px-3.5 py-2 rounded-xl text-sm flex items-center gap-2 transition shadow cursor-pointer" title="Kembali ke Menu Utama">
+            <i class="fa-solid fa-house"></i>
+            <span class="hidden sm:inline">Menu Utama</span>
+          </button>
+          <div>
+            <h2 class="font-display font-bold text-white text-base sm:text-lg leading-none">MISTERI SISTEM EKSKRESI</h2>
+            <span class="text-[11px] text-turquoise font-medium">IPA/Biologi Kelas VII • SMAP 2 Kalianda</span>
+          </div>
+        </div>
+
+        <!-- Kanan: Indikator Skor, Bintang & Audio Cepat -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Skor Misi -->
+          <div class="bg-navy-card border border-gold/40 px-3 py-1.5 rounded-xl flex items-center gap-2 text-xs sm:text-sm">
+            <i class="fa-solid fa-star text-gold"></i>
+            <span class="text-ice/80 hidden md:inline">Bintang:</span>
+            <span id="header-stars" class="font-bold text-gold">0</span>
+            <span class="text-ice/30">|</span>
+            <i class="fa-solid fa-trophy text-turquoise"></i>
+            <span id="header-score" class="font-bold text-white">0</span>
+          </div>
+
+          <!-- Toggle Audio Cepat -->
+          <button id="quick-audio-btn" onclick="toggleQuickAudio()" class="bg-navy-light hover:bg-navy-card border border-turquoise/50 text-turquoise px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition cursor-pointer" title="Hidup/Matikan Semua Suara">
+            <i id="quick-audio-icon" class="fa-solid fa-volume-high"></i>
+            <span id="quick-audio-label" class="hidden sm:inline">Audio ON</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- KONTEN DINAMIS TIAP HALAMAN -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+      <!-- ================================================================= -->
+      <!-- 2. HALAMAN UTAMA (HOME - 8 KARTU MENU)                            -->
+      <!-- ================================================================= -->
+      <div id="view-home" class="space-y-8 fade-in">
+        <!-- Banner Sapaan -->
+        <div class="bg-gradient-to-r from-navy-card via-navy-light to-navy-card border border-turquoise/40 rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2 text-center md:text-left">
+            <span class="inline-block bg-gold/20 text-gold border border-gold/40 text-xs font-bold px-3 py-1 rounded-full">
+              <i class="fa-solid fa-compass mr-1"></i> MISI DETEKTIF SAINS AKTIF
+            </span>
+            <h1 class="text-2xl sm:text-4xl font-display font-bold text-white">
+              Halo, Penjelajah Sains! 👋
+            </h1>
+            <p class="text-ice/90 text-sm sm:text-base max-w-2xl">
+              Siapkah kamu mengungkap rahasia bagaimana tubuh membuang zat sisa metabolisme? <strong class="text-turquoise">PILIH MISI BELAJARMU</strong> di bawah ini dan kumpulkan seluruh bintang penghargaan!
+            </p>
+          </div>
+          <div class="flex-shrink-0 flex flex-col items-center bg-navy-dark/70 border border-turquoise/30 rounded-2xl p-4 min-w-[190px]">
+            <span class="text-xs text-ice/70 mb-1">Progres Jelajah Misi</span>
+            <div class="text-2xl font-display font-bold text-gold" id="home-progress-text">0 / 8 Misi</div>
+            <div class="w-full bg-navy-light h-2.5 rounded-full mt-2 overflow-hidden">
+              <div id="home-progress-bar" class="bg-turquoise h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid 8 Kartu Menu Utama -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- Menu 1: MATERI -->
+          <button onclick="navigateTo('materi')" class="group text-left bg-navy-card hover:bg-navy-light border-2 border-turquoise/30 hover:border-turquoise rounded-3xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg flex flex-col justify-between cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-turquoise/20 text-turquoise group-hover:bg-turquoise group-hover:text-navy-dark flex items-center justify-center text-2xl transition">
+                  <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+                <span id="badge-materi" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-navy-dark text-ice/70">7 Subbab</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-turquoise transition">1. MATERI</h3>
+              <p class="text-xs sm:text-sm text-ice/75 mt-2">Pelajari 4 organ ekskresi, struktur nefron, pembentukan urine & narasi suara.</p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-ice/10 flex items-center justify-between text-xs font-bold text-turquoise">
+              <span>Buka Modul Materi</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </div>
+          </button>
+
+          <!-- Menu 2: SIMULASI -->
+          <button onclick="navigateTo('simulasi')" class="group text-left bg-navy-card hover:bg-navy-light border-2 border-turquoise/30 hover:border-turquoise rounded-3xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg flex flex-col justify-between cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-sky-500/20 text-sky-400 group-hover:bg-sky-400 group-hover:text-navy-dark flex items-center justify-center text-2xl transition">
+                  <i class="fa-solid fa-microscope"></i>
+                </div>
+                <span id="badge-simulasi" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-navy-dark text-ice/70">Interaktif 3D/2D</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-sky-300 transition">2. SIMULASI</h3>
+              <p class="text-xs sm:text-sm text-ice/75 mt-2">Petualangan di Dalam Ginjal: amati filtrasi, reabsorpsi, dan augmentasi partikel.</p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-ice/10 flex items-center justify-between text-xs font-bold text-sky-300">
+              <span>Mulai Simulasi</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </div>
+          </button>
+
+          <!-- Menu 3: PRAKTIKUM -->
+          <button onclick="navigateTo('praktikum')" class="group text-left bg-navy-card hover:bg-navy-light border-2 border-turquoise/30 hover:border-turquoise rounded-3xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg flex flex-col justify-between cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 group-hover:bg-emerald-400 group-hover:text-navy-dark flex items-center justify-center text-2xl transition">
+                  <i class="fa-solid fa-flask-vial"></i>
+                </div>
+                <span id="badge-praktikum" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-navy-dark text-ice/70">Lab Virtual</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-emerald-300 transition">3. PRAKTIKUM</h3>
+              <p class="text-xs sm:text-sm text-ice/75 mt-2">Rakit model penyaringan air sederhana secara virtual dan uji kejernihan air.</p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-ice/10 flex items-center justify-between text-xs font-bold text-emerald-300">
+              <span>Masuk Laboratorium</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </div>
+          </button>
+
+          <!-- Menu 4: GAME -->
+          <button onclick="navigateTo('game')" class="group text-left bg-navy-card hover:bg-navy-light border-2 border-gold/30 hover:border-gold rounded-3xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg flex flex-col justify-between cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-gold/20 text-gold group-hover:bg-gold group-hover:text-navy-dark flex items-center justify-center text-2xl transition">
+                  <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <span id="badge-game" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-navy-dark text-gold">3 Mini Game</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-gold transition">4. GAME</h3>
+              <p class="text-xs sm:text-sm text-ice/75 mt-2">Pasangkan Organ, Detektif Ginjal, dan Kuis Kilat 60 detik berhadiah bintang!</p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-ice/10 flex items-center justify-between text-xs font-bold text-gold">
+              <span>Mainkan Sekarang</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </div>
+          </button>
+
+          <!-- Menu 5: LKPD -->
+          <button onclick="navigateTo('lkpd')" class="group text-left bg-navy-card hover:bg-navy-light border-2 border-turquoise/30 hover:border-turquoise rounded-3xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg flex flex-col justify-between cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-purple-500/20 text-purple-300 group-hover:bg-purple-400 group-hover:text-navy-dark flex items-center justify-center text-2xl transition">
+                  <i class="fa-solid fa-file-signature"></i>
+                </div>
+                <span id="badge-lkpd" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-navy-dark text-ice/70">Auto-Save & PDF</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-purple-300 transition">5. LKPD</h3>
+              <p class="text-xs sm:text-sm text-ice/75 mt-2">Lembar Kerja Peserta Didik digital yang bisa diisi, disimpan otomatis & dicetak.</p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-ice/10 flex items-center justify-between text-xs font-bold text-purple-300">
+              <span>Kerjakan LKPD</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </div>
+          </button>
+
+          <!-- Menu 6: EVALUASI -->
+          <button onclick="navigateTo('evaluasi')" class="group text-left bg-navy-card hover:bg-navy-light border-2 border-gold/30 hover:border-gold rounded-3xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg flex flex-col justify-between cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-400 group-hover:bg-rose-400 group-hover:text-navy-dark flex items-center justify-center text-2xl transition">
+                  <i class="fa-solid fa-award"></i>
+                </div>
+                <span id="badge-evaluasi" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-navy-dark text-ice/70">25 Soal Lengkap</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-rose-300 transition">6. EVALUASI</h3>
+              <p class="text-xs sm:text-sm text-ice/75 mt-2">Uji pemahaman akhir (15 PG, 5 Benar/Salah, 5 Menjodohkan) dengan pembahasan.</p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-ice/10 flex items-center justify-between text-xs font-bold text-rose-300">
+              <span>Mulai Ujian</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </div>
+          </button>
+
+          <!-- Menu 7: PENGEMBANG -->
+          <button onclick="navigateTo('pengembang')" class="group text-left bg-navy-card hover:bg-navy-light border-2 border-turquoise/30 hover:border-turquoise rounded-3xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg flex flex-col justify-between cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-300 group-hover:bg-amber-400 group-hover:text-navy-dark flex items-center justify-center text-2xl transition">
+                  <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-navy-dark text-ice/70">Profil Guru</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-amber-300 transition">7. PENGEMBANG</h3>
+              <p class="text-xs sm:text-sm text-ice/75 mt-2">Informasi penyusun MPI: Rahmatina, S.Ei. (SMAP 2 Kalianda) & tujuan media.</p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-ice/10 flex items-center justify-between text-xs font-bold text-amber-300">
+              <span>Lihat Profil</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </div>
+          </button>
+
+          <!-- Menu 8: PENGATURAN AUDIO -->
+          <button onclick="navigateTo('audio')" class="group text-left bg-navy-card hover:bg-navy-light border-2 border-turquoise/30 hover:border-turquoise rounded-3xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg flex flex-col justify-between cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 rounded-2xl bg-teal-500/20 text-teal-300 group-hover:bg-teal-400 group-hover:text-navy-dark flex items-center justify-center text-2xl transition">
+                  <i class="fa-solid fa-sliders"></i>
+                </div>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-navy-dark text-ice/70">Suara & Musik</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-teal-300 transition">8. PENGATURAN AUDIO</h3>
+              <p class="text-xs sm:text-sm text-ice/75 mt-2">Atur volume narator bahasa Indonesia, kecepatan bicara, SFX & musik latar.</p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-ice/10 flex items-center justify-between text-xs font-bold text-teal-300">
+              <span>Atur Audio</span>
+              <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 3. MENU 1: MATERI (7 SUBBAB INTERAKTIF + NARASI + KUIS SINGKAT)    -->
+      <!-- ================================================================= -->
+      <div id="view-materi" class="hidden space-y-6 fade-in">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-ice/15 pb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-turquoise">Misi 1 • Modul Pembelajaran</span>
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">Eksplorasi Sistem Ekskresi Manusia</h2>
+          </div>
+          <button onclick="navigateTo('home')" class="self-start sm:self-auto bg-navy-card hover:bg-navy-light border border-ice/20 px-4 py-2 rounded-xl text-sm font-semibold text-ice flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Sidebar Daftar 7 Subbab -->
+          <div class="lg:col-span-4 space-y-2" id="materi-tabs">
+            <!-- Diisi otomatis via JS -->
+          </div>
+
+          <!-- Area Konten Materi (Putih Kebiruan #E9F4F8) -->
+          <div class="lg:col-span-8 bg-ice text-navy-dark rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-turquoise/40 space-y-6">
+            <!-- Kontrol Audio Narasi Materi -->
+            <div class="bg-white/90 border border-navy/10 rounded-2xl p-3.5 flex flex-wrap items-center justify-between gap-3 shadow-sm">
+              <div class="flex items-center gap-2 text-navy font-bold text-sm">
+                <i class="fa-solid fa-headphones text-turquoise text-lg"></i>
+                <span>Narator Sains (Bahasa Indonesia):</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-2">
+                <button onclick="speakCurrentMateri()" class="bg-turquoise hover:bg-turquoise-dark text-white font-semibold px-3.5 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer">
+                  <i class="fa-solid fa-play"></i> Dengarkan Materi
+                </button>
+                <button onclick="togglePauseSpeech()" id="btn-pause-speech" class="bg-gold hover:bg-gold-dark text-navy-dark font-semibold px-3.5 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer">
+                  <i class="fa-solid fa-pause"></i> Jeda/Lanjut
+                </button>
+                <button onclick="repeatSpeech()" class="bg-navy hover:bg-navy-light text-white font-semibold px-3.5 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer">
+                  <i class="fa-solid fa-rotate-right"></i> Ulangi
+                </button>
+              </div>
+            </div>
+
+            <!-- Konten Dinamis Subbab -->
+            <div id="materi-content-body" class="space-y-5">
+              <!-- Diisi via JS -->
+            </div>
+
+            <!-- Kuis Singkat (Cek Pemahaman) -->
+            <div class="bg-navy/5 border-2 border-turquoise/40 rounded-2xl p-5 space-y-3">
+              <div class="flex items-center gap-2 text-navy font-display font-bold text-base">
+                <i class="fa-solid fa-circle-question text-turquoise text-xl"></i>
+                <span>Cek Pemahaman Cepat</span>
+              </div>
+              <p id="materi-quiz-q" class="font-semibold text-sm sm:text-base text-navy-dark"></p>
+              <div id="materi-quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+              <div id="materi-quiz-feedback" class="hidden text-sm font-medium p-3 rounded-xl"></div>
+            </div>
+
+            <!-- Navigasi Bawah Subbab -->
+            <div class="flex items-center justify-between pt-2 border-t border-navy/10">
+              <button id="btn-prev-materi" onclick="changeMateriStep(-1)" class="px-4 py-2 rounded-xl bg-navy/10 hover:bg-navy/20 text-navy font-bold text-sm cursor-pointer">
+                <i class="fa-solid fa-chevron-left mr-1"></i> Sebelumnya
+              </button>
+              <span id="materi-step-indicator" class="text-xs font-bold text-navy/60">Subbab 1 dari 7</span>
+              <button id="btn-next-materi" onclick="changeMateriStep(1)" class="px-4 py-2 rounded-xl bg-turquoise hover:bg-turquoise-dark text-white font-bold text-sm cursor-pointer">
+                Selanjutnya <i class="fa-solid fa-chevron-right ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 4. MENU 2: SIMULASI ("Petualangan di Dalam Ginjal")               -->
+      <!-- ================================================================= -->
+      <div id="view-simulasi" class="hidden space-y-6 fade-in">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-ice/15 pb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Misi 2 • Laboratorium Nefron</span>
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">Simulasi: Petualangan di Dalam Ginjal</h2>
+          </div>
+          <button onclick="navigateTo('home')" class="self-start sm:self-auto bg-navy-card hover:bg-navy-light border border-ice/20 px-4 py-2 rounded-xl text-sm font-semibold text-ice flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Area Canvas Simulasi Nefron (7 Kolom) -->
+          <div class="lg:col-span-8 bg-navy-card border-2 border-turquoise/40 rounded-3xl p-4 sm:p-6 shadow-2xl flex flex-col justify-between space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500 animate-ping"></span>
+                <span class="text-xs sm:text-sm font-bold text-white">Visualisasi Aliran Darah & Filtrasi Nefron</span>
+              </div>
+              <!-- Legenda Partikel -->
+              <div class="flex flex-wrap items-center gap-3 text-[11px] bg-navy-dark/80 px-3 py-1.5 rounded-xl border border-ice/10">
+                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span> Sel Darah & Protein</span>
+                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block"></span> Air & Glukosa</span>
+                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block"></span> Urea & Zat Sisa</span>
+              </div>
+            </div>
+
+            <!-- Canvas Responsif -->
+            <div class="relative w-full bg-navy-dark rounded-2xl border border-ice/15 overflow-hidden" style="min-height: 360px;">
+              <canvas id="nephron-canvas" class="w-full h-full block"></canvas>
+              <!-- Label Tahap Aktif Overlay -->
+              <div id="sim-overlay-badge" class="absolute top-3 left-3 bg-navy/90 border border-turquoise px-3 py-1.5 rounded-xl text-xs font-bold text-turquoise shadow">
+                Mode: Semua Tahap Berurutan
+              </div>
+            </div>
+
+            <!-- Kontrol Tombol Simulasi -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <button onclick="simControl('start')" class="bg-turquoise hover:bg-turquoise-dark text-navy-dark font-bold px-4 py-2.5 rounded-xl text-sm flex items-center gap-2 shadow cursor-pointer">
+                  <i class="fa-solid fa-play"></i> Mulai
+                </button>
+                <button onclick="simControl('pause')" class="bg-gold hover:bg-gold-dark text-navy-dark font-bold px-4 py-2.5 rounded-xl text-sm flex items-center gap-2 shadow cursor-pointer">
+                  <i class="fa-solid fa-pause"></i> Jeda
+                </button>
+                <button onclick="simControl('reset')" class="bg-navy-light hover:bg-navy border border-ice/20 text-white font-bold px-4 py-2.5 rounded-xl text-sm flex items-center gap-2 cursor-pointer">
+                  <i class="fa-solid fa-rotate-left"></i> Ulangi
+                </button>
+              </div>
+              <button onclick="narrateSimulationStage()" class="bg-sky-500 hover:bg-sky-600 text-white font-bold px-4 py-2.5 rounded-xl text-sm flex items-center gap-2 shadow cursor-pointer">
+                <i class="fa-solid fa-volume-high"></i> Dengarkan Narasi Tahap Ini
+              </button>
+            </div>
+          </div>
+
+          <!-- Panel Pemilihan 3 Tahap & Penjelasan Ilmiah (5 Kolom) -->
+          <div class="lg:col-span-4 space-y-4">
+            <div class="bg-ice text-navy-dark rounded-3xl p-5 shadow-xl border-2 border-turquoise/40 space-y-4">
+              <h3 class="font-display font-bold text-lg text-navy flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-turquoise"></i> Pilih Tahapan Urine
+              </h3>
+
+              <div class="space-y-2.5">
+                <button onclick="setSimStage(1)" id="sim-btn-1" class="w-full text-left p-3.5 rounded-2xl border-2 border-turquoise bg-turquoise/15 transition cursor-pointer">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-navy text-sm">1. FILTRASI (Penyaringan)</span>
+                    <span class="text-xs bg-rose-500 text-white px-2 py-0.5 rounded-full font-bold">Glomerulus</span>
+                  </div>
+                  <p class="text-xs text-navy/80 mt-1">Menyaring darah → menghasilkan <strong>Urine Primer</strong>.</p>
+                </button>
+
+                <button onclick="setSimStage(2)" id="sim-btn-2" class="w-full text-left p-3.5 rounded-2xl border-2 border-navy/15 bg-white hover:border-turquoise transition cursor-pointer">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-navy text-sm">2. REABSORPSI (Penyerapan)</span>
+                    <span class="text-xs bg-sky-600 text-white px-2 py-0.5 rounded-full font-bold">Tubulus Proksimal</span>
+                  </div>
+                  <p class="text-xs text-navy/80 mt-1">Menyerap zat berguna → menghasilkan <strong>Urine Sekunder</strong>.</p>
+                </button>
+
+                <button onclick="setSimStage(3)" id="sim-btn-3" class="w-full text-left p-3.5 rounded-2xl border-2 border-navy/15 bg-white hover:border-turquoise transition cursor-pointer">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-navy text-sm">3. AUGMENTASI (Pengumpulan)</span>
+                    <span class="text-xs bg-amber-600 text-white px-2 py-0.5 rounded-full font-bold">Tubulus Distal</span>
+                  </div>
+                  <p class="text-xs text-navy/80 mt-1">Menambah zat sisa → menghasilkan <strong>Urine Sesungguhnya</strong>.</p>
+                </button>
+              </div>
+
+              <!-- Kotak Penjelasan Detail Tahap Aktif -->
+              <div id="sim-detail-box" class="bg-navy text-ice rounded-2xl p-4 space-y-2">
+                <h4 id="sim-detail-title" class="font-display font-bold text-gold text-base">Tahap 1: Filtrasi di Glomerulus</h4>
+                <p id="sim-detail-desc" class="text-xs sm:text-sm leading-relaxed text-ice/90">
+                  Darah bertekanan tinggi masuk ke glomerulus. Air, glukosa, asam amino, garam mineral, dan urea tersaring masuk ke Kapsula Bowman membentuk <strong>urine primer</strong>. Sel darah merah dan protein berukuran besar tetap tertahan di pembuluh darah.
+                </p>
+                <div class="pt-2 border-t border-ice/15 flex items-center justify-between text-xs">
+                  <span class="text-turquoise font-semibold">Warna Cairan:</span>
+                  <span id="sim-fluid-color" class="font-bold text-rose-300">Merah Darah → Jernih Kekuningan</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 5. MENU 3: PRAKTIKUM ("Membuat Model Penyaringan Sederhana")      -->
+      <!-- ================================================================= -->
+      <div id="view-praktikum" class="hidden space-y-6 fade-in">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-ice/15 pb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Misi 3 • Eksperimen IPA</span>
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">Praktikum: Membuat Model Penyaringan Sederhana</h2>
+          </div>
+          <button onclick="navigateTo('home')" class="self-start sm:self-auto bg-navy-card hover:bg-navy-light border border-ice/20 px-4 py-2 rounded-xl text-sm font-semibold text-ice flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Kolom Kiri: Simulasi Praktikum Virtual Interaktif (6 Kolom) -->
+          <div class="lg:col-span-6 bg-navy-card border-2 border-emerald-400/40 rounded-3xl p-6 shadow-2xl space-y-5">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display font-bold text-xl text-white">
+                <i class="fa-solid fa-vial-circle-check text-emerald-400 mr-2"></i>Simulasi Lab Virtual
+              </h3>
+              <button onclick="resetPraktikumSim()" class="text-xs bg-navy-dark hover:bg-navy-light text-ice px-3 py-1.5 rounded-xl border border-ice/20 cursor-pointer">
+                <i class="fa-solid fa-rotate-left mr-1"></i> Reset Alat
+              </button>
+            </div>
+
+            <p class="text-xs sm:text-sm text-ice/80">
+              Susun lapisan penyaring dari bawah ke atas secara berurutan: <strong>1) Kapas</strong> → <strong>2) Pasir Bersih</strong> → <strong>3) Kerikil</strong>, lalu tuangkan air keruh!
+            </p>
+
+            <!-- Tombol Pilih Bahan -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <button onclick="addFilterLayer('kapas')" id="btn-layer-kapas" class="p-3 rounded-2xl bg-navy-dark hover:bg-navy-light border-2 border-ice/20 text-center transition cursor-pointer">
+                <div class="text-2xl mb-1">☁️</div>
+                <div class="text-xs font-bold text-white">1. Kapas</div>
+              </button>
+              <button onclick="addFilterLayer('pasir')" id="btn-layer-pasir" class="p-3 rounded-2xl bg-navy-dark hover:bg-navy-light border-2 border-ice/20 text-center transition cursor-pointer">
+                <div class="text-2xl mb-1">⏳</div>
+                <div class="text-xs font-bold text-white">2. Pasir Bersih</div>
+              </button>
+              <button onclick="addFilterLayer('kerikil')" id="btn-layer-kerikil" class="p-3 rounded-2xl bg-navy-dark hover:bg-navy-light border-2 border-ice/20 text-center transition cursor-pointer">
+                <div class="text-2xl mb-1">🪨</div>
+                <div class="text-xs font-bold text-white">3. Kerikil</div>
+              </button>
+              <button onclick="pourDirtyWater()" id="btn-pour-water" class="p-3 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-navy-dark font-bold text-center transition shadow-lg cursor-pointer">
+                <div class="text-2xl mb-1">💧</div>
+                <div class="text-xs font-extrabold">4. Tuang Air Keruh</div>
+              </button>
+            </div>
+
+            <!-- Visual SVG Botol Penyaring & Gelas Penampung -->
+            <div class="bg-navy-dark rounded-2xl p-4 border border-ice/15 flex flex-col items-center">
+              <svg viewBox="0 0 260 320" class="w-60 h-auto">
+                <!-- Air Keruh Dituang (Animasi) -->
+                <g id="prak-dirty-stream" class="hidden">
+                  <path d="M130,10 L130,75" stroke="#92400E" stroke-width="8" stroke-linecap="round" stroke-dasharray="6,4" />
+                  <ellipse cx="130" cy="78" rx="38" ry="8" fill="#92400E" opacity="0.85" />
+                </g>
+
+                <!-- Corong Botol Plastik Terbalik -->
+                <path d="M85,40 L175,40 L175,155 L142,195 L142,215 L118,215 L118,195 L85,155 Z" fill="rgba(224, 242, 254, 0.14)" stroke="#7DD3FC" stroke-width="2.5" />
+
+                <!-- Lapisan 1: Kapas (Paling Bawah) -->
+                <g id="layer-kapas-svg" class="hidden">
+                  <path d="M90,153 L170,153 L141,192 L119,192 Z" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1" />
+                  <text x="130" y="175" text-anchor="middle" fill="#0F172A" font-size="9" font-weight="bold">KAPAS</text>
+                </g>
+
+                <!-- Lapisan 2: Pasir Bersih (Tengah) -->
+                <g id="layer-pasir-svg" class="hidden">
+                  <rect x="87" y="118" width="86" height="35" fill="#FDE68A" stroke="#F59E0B" stroke-width="1" />
+                  <text x="130" y="139" text-anchor="middle" fill="#78350F" font-size="9" font-weight="bold">PASIR BERSIH</text>
+                </g>
+
+                <!-- Lapisan 3: Kerikil (Atas) -->
+                <g id="layer-kerikil-svg" class="hidden">
+                  <rect x="87" y="83" width="86" height="35" fill="#94A3B8" stroke="#64748B" stroke-width="1" />
+                  <circle cx="102" cy="96" r="6" fill="#64748B" />
+                  <circle cx="122" cy="105" r="7" fill="#475569" />
+                  <circle cx="145" cy="95" r="6" fill="#64748B" />
+                  <circle cx="158" cy="106" r="5" fill="#475569" />
+                  <text x="130" y="104" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="bold">KERIKIL</text>
+                </g>
+
+                <!-- Tetesan Air Jernih -->
+                <g id="prak-clean-drops" class="hidden">
+                  <circle cx="130" cy="228" r="4" fill="#38BDF8" />
+                  <circle cx="130" cy="246" r="4" fill="#38BDF8" />
+                </g>
+
+                <!-- Gelas Bening Penampung -->
+                <path d="M95,245 L165,245 L158,308 L102,308 Z" fill="rgba(255,255,255,0.12)" stroke="#E2E8F0" stroke-width="2" />
+                <!-- Hasil Air di Gelas -->
+                <path id="prak-water-result" d="M99,275 L161,275 L158,306 L102,306 Z" fill="#38BDF8" opacity="0" class="transition-all duration-1000" />
+                <text id="prak-result-label" x="130" y="295" text-anchor="middle" fill="#FFFFFF" font-size="9" font-weight="bold" opacity="0">AIR JERNIH</text>
+              </svg>
+
+              <div id="prak-status-text" class="text-center text-xs sm:text-sm font-semibold text-emerald-300 mt-2">
+                Status: Belum ada lapisan penyaring di dalam botol.
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan: Panduan Praktikum & Catatan Ilmiah (6 Kolom) -->
+          <div class="lg:col-span-6 bg-ice text-navy-dark rounded-3xl p-6 shadow-2xl border-2 border-emerald-400/40 space-y-4">
+            <div class="flex items-center justify-between gap-2">
+              <h3 class="font-display font-bold text-xl text-navy">Panduan Praktikum IPA</h3>
+              <button onclick="narratePraktikum()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-volume-high"></i> Petunjuk Suara
+              </button>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
+              <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+                <strong class="text-navy block mb-1"><i class="fa-solid fa-bullseye text-emerald-600 mr-1"></i> Tujuan & Dasar Teori:</strong>
+                Memahami prinsip penyaringan (filtrasi) mekanis sebagai analogi sederhana cara kerja glomerulus ginjal dalam memisahkan partikel besar dari cairan.
+              </div>
+
+              <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+                <strong class="text-navy block mb-1"><i class="fa-solid fa-toolbox text-emerald-600 mr-1"></i> Alat & Bahan Nyata:</strong>
+                Botol plastik bekas (dipotong bagian bawahnya), kapas, pasir bersih, kerikil, air bercampur tanah (air keruh), dan gelas bening.
+              </div>
+
+              <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+                <strong class="text-navy block mb-1"><i class="fa-solid fa-list-ol text-emerald-600 mr-1"></i> Fungsi Tiap Lapisan:</strong>
+                <ul class="list-disc pl-5 space-y-1">
+                  <li><strong>Kerikil:</strong> Menyaring kotoran/partikel berukuran besar.</li>
+                  <li><strong>Pasir Bersih:</strong> Menyaring endapan lumpur berukuran sedang.</li>
+                  <li><strong>Kapas:</strong> Menyaring partikel halus agar air keluar tampak jernih.</li>
+                </ul>
+              </div>
+
+              <!-- Peringatan Keselamatan Ilmiah -->
+              <div class="bg-amber-100 border-l-4 border-amber-500 p-3.5 rounded-xl text-amber-950">
+                <strong class="block font-bold"><i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1"></i> Catatan Ilmiah & Keselamatan:</strong>
+                Model ini hanyalah analogi <strong>penyaringan mekanis</strong>, bukan replika lengkap proses pembentukan urine (tidak ada reabsorpsi & augmentasi kimiawi). <strong>Air hasil penyaringan TIDAK BOLEH DIMINUM!</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 6. MENU 4: GAME (3 PERMAINAN EDUKATIF INTERAKTIF)                 -->
+      <!-- ================================================================= -->
+      <div id="view-game" class="hidden space-y-6 fade-in">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-ice/15 pb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-gold">Misi 4 • Arena Tantangan Sains</span>
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">Game Edukatif Sistem Ekskresi</h2>
+          </div>
+          <button onclick="navigateTo('home')" class="self-start sm:self-auto bg-navy-card hover:bg-navy-light border border-ice/20 px-4 py-2 rounded-xl text-sm font-semibold text-ice flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+          </button>
+        </div>
+
+        <!-- Tab Pemilih 3 Game -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <button onclick="selectGame(1)" id="tab-game-1" class="p-4 rounded-2xl border-2 border-gold bg-navy-light text-left transition cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-display font-bold text-white text-base">🧩 Game 1: Pasangkan Organ</span>
+              <span id="g1-stars" class="text-xs text-gold font-bold">☆☆☆</span>
+            </div>
+            <p class="text-xs text-ice/75">Cocokkan 4 organ ekskresi dengan zat sisa yang dikeluarkan.</p>
+          </button>
+
+          <button onclick="selectGame(2)" id="tab-game-2" class="p-4 rounded-2xl border-2 border-ice/20 bg-navy-card hover:border-gold text-left transition cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-display font-bold text-white text-base">🕵️ Game 2: Detektif Ginjal</span>
+              <span id="g2-stars" class="text-xs text-gold font-bold">☆☆☆</span>
+            </div>
+            <p class="text-xs text-ice/75">Pecahkan 5 kasus misteri laboratorium analisis urine.</p>
+          </button>
+
+          <button onclick="selectGame(3)" id="tab-game-3" class="p-4 rounded-2xl border-2 border-ice/20 bg-navy-card hover:border-gold text-left transition cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-display font-bold text-white text-base">⚡ Game 3: Kuis Kilat</span>
+              <span id="g3-stars" class="text-xs text-gold font-bold">☆☆☆</span>
+            </div>
+            <p class="text-xs text-ice/75">Jawab soal sebanyak-banyaknya dalam waktu 60 detik!</p>
+          </button>
+        </div>
+
+        <!-- Kontainer Area Game Aktif -->
+        <div id="game-arena" class="bg-ice text-navy-dark rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-gold/50">
+          <!-- Diisi otomatis via JS -->
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 7. MENU 5: LKPD DIGITAL (AUTO-SAVE LOCALSTORAGE & PRINT PDF)      -->
+      <!-- ================================================================= -->
+      <div id="view-lkpd" class="hidden space-y-6 fade-in">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-ice/15 pb-4 no-print">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-purple-300">Misi 5 • Lembar Kerja Siswa</span>
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">LKPD Digital – Menjelajahi Sistem Ekskresi</h2>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="saveLKPD(true)" class="bg-turquoise hover:bg-turquoise-dark text-navy-dark font-bold px-4 py-2 rounded-xl text-sm flex items-center gap-2 shadow cursor-pointer">
+              <i class="fa-solid fa-floppy-disk"></i> Simpan Jawaban
+            </button>
+            <button onclick="window.print()" class="bg-gold hover:bg-gold-dark text-navy-dark font-bold px-4 py-2 rounded-xl text-sm flex items-center gap-2 shadow cursor-pointer">
+              <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
+            </button>
+            <button onclick="resetLKPD()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-3.5 py-2 rounded-xl text-sm flex items-center gap-1.5 cursor-pointer">
+              <i class="fa-solid fa-trash"></i> Reset
+            </button>
+            <button onclick="navigateTo('home')" class="bg-navy-card hover:bg-navy-light border border-ice/20 px-4 py-2 rounded-xl text-sm font-semibold text-ice flex items-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-arrow-left"></i> Kembali
+            </button>
+          </div>
+        </div>
+
+        <!-- Lembar Dokumen LKPD (Putih Kebiruan / Siap Cetak) -->
+        <div id="lkpd-printable-area" class="bg-white text-navy-dark rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-purple-400/40 space-y-6">
+          <!-- Kop LKPD -->
+          <div class="border-b-2 border-navy pb-4 text-center space-y-1">
+            <div class="text-xs font-bold uppercase tracking-widest text-turquoise-dark">LEMBAR KERJA PESERTA DIDIK (LKPD)</div>
+            <h3 class="text-xl sm:text-2xl font-display font-bold text-navy">MENJELAJAHI SISTEM EKSKRESI MANUSIA</h3>
+            <p class="text-xs text-slate-600">Mata Pelajaran: IPA/Biologi • Kelas VII Fase D • Penyusun: Rahmatina, S.Ei. (SMAP 2 Kalianda)</p>
+          </div>
+
+          <!-- 1. Identitas Peserta Didik -->
+          <div class="bg-ice/60 p-4 rounded-2xl border border-navy/15 space-y-3">
+            <h4 class="font-bold text-navy text-sm uppercase">1. Identitas Peserta Didik</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap</label>
+                <input type="text" id="lkpd-nama" oninput="saveLKPD(false)" placeholder="Ketik nama siswa..." class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:border-turquoise outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas</label>
+                <input type="text" id="lkpd-kelas" oninput="saveLKPD(false)" placeholder="Contoh: VII A" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:border-turquoise outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Kelompok</label>
+                <input type="text" id="lkpd-kelompok" oninput="saveLKPD(false)" placeholder="Nama kelompok..." class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:border-turquoise outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Tanggal</label>
+                <input type="date" id="lkpd-tanggal" oninput="saveLKPD(false)" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:border-turquoise outline-none" />
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Tujuan & Petunjuk -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+              <strong class="text-navy block mb-1">2. Tujuan Pembelajaran:</strong>
+              Peserta didik mampu mengidentifikasi 4 organ ekskresi manusia beserta zat sisa yang dikeluarkan, menganalisis tahapan pembentukan urine, serta menyimpulkan hasil praktikum penyaringan sederhana.
+            </div>
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+              <strong class="text-navy block mb-1">3. Petunjuk Pengerjaan:</strong>
+              Pelajari menu Materi, jalankan Simulasi Ginjal, dan lakukan Praktikum Virtual terlebih dahulu sebelum melengkapi tabel di bawah ini. Jawaban tersimpan otomatis.
+            </div>
+          </div>
+
+          <!-- 4. Tabel Identifikasi Organ Ekskresi -->
+          <div class="space-y-2">
+            <h4 class="font-bold text-navy text-sm uppercase">4. Tabel Identifikasi Organ Ekskresi & Zat Sisa</h4>
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs sm:text-sm border-collapse border border-slate-300">
+                <thead>
+                  <tr class="bg-navy text-white">
+                    <th class="border border-slate-300 p-2.5 text-left w-12">No</th>
+                    <th class="border border-slate-300 p-2.5 text-left w-40">Organ Ekskresi</th>
+                    <th class="border border-slate-300 p-2.5 text-left">Zat Sisa yang Dikeluarkan</th>
+                    <th class="border border-slate-300 p-2.5 text-left">Fungsi Utama dalam Ekskresi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="border border-slate-300 p-2 text-center font-bold">1</td>
+                    <td class="border border-slate-300 p-2 font-semibold">Ginjal</td>
+                    <td class="border border-slate-300 p-2"><input type="text" id="lkpd-org1-zat" oninput="saveLKPD(false)" placeholder="Isi zat sisa..." class="w-full px-2 py-1.5 rounded border border-slate-200" /></td>
+                    <td class="border border-slate-300 p-2"><input type="text" id="lkpd-org1-fn" oninput="saveLKPD(false)" placeholder="Isi fungsi..." class="w-full px-2 py-1.5 rounded border border-slate-200" /></td>
+                  </tr>
+                  <tr>
+                    <td class="border border-slate-300 p-2 text-center font-bold">2</td>
+                    <td class="border border-slate-300 p-2 font-semibold">Kulit</td>
+                    <td class="border border-slate-300 p-2"><input type="text" id="lkpd-org2-zat" oninput="saveLKPD(false)" placeholder="Isi zat sisa..." class="w-full px-2 py-1.5 rounded border border-slate-200" /></td>
+                    <td class="border border-slate-300 p-2"><input type="text" id="lkpd-org2-fn" oninput="saveLKPD(false)" placeholder="Isi fungsi..." class="w-full px-2 py-1.5 rounded border border-slate-200" /></td>
+                  </tr>
+                  <tr>
+                    <td class="border border-slate-300 p-2 text-center font-bold">3</td>
+                    <td class="border border-slate-300 p-2 font-semibold">Paru-paru</td>
+                    <td class="border border-slate-300 p-2"><input type="text" id="lkpd-org3-zat" oninput="saveLKPD(false)" placeholder="Isi zat sisa..." class="w-full px-2 py-1.5 rounded border border-slate-200" /></td>
+                    <td class="border border-slate-300 p-2"><input type="text" id="lkpd-org3-fn" oninput="saveLKPD(false)" placeholder="Isi fungsi..." class="w-full px-2 py-1.5 rounded border border-slate-200" /></td>
+                  </tr>
+                  <tr>
+                    <td class="border border-slate-300 p-2 text-center font-bold">4</td>
+                    <td class="border border-slate-300 p-2 font-semibold">Hati</td>
+                    <td class="border border-slate-300 p-2"><input type="text" id="lkpd-org4-zat" oninput="saveLKPD(false)" placeholder="Isi zat sisa..." class="w-full px-2 py-1.5 rounded border border-slate-200" /></td>
+                    <td class="border border-slate-300 p-2"><input type="text" id="lkpd-org4-fn" oninput="saveLKPD(false)" placeholder="Isi fungsi..." class="w-full px-2 py-1.5 rounded border border-slate-200" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 5. Analisis Simulasi Ginjal -->
+          <div class="space-y-2">
+            <h4 class="font-bold text-navy text-sm uppercase">5. Analisis Simulasi Pembentukan Urine</h4>
+            <p class="text-xs text-slate-600">Jelaskan secara singkat tempat terjadinya dan hasil dari tahapan Filtrasi, Reabsorpsi, dan Augmentasi berdasarkan simulasi:</p>
+            <textarea id="lkpd-simulasi" rows="3" oninput="saveLKPD(false)" placeholder="Tuliskan hasil pengamatan simulasi nefron di sini..." class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:border-turquoise outline-none"></textarea>
+          </div>
+
+          <!-- 6. Hasil Pengamatan Praktikum -->
+          <div class="space-y-2">
+            <h4 class="font-bold text-navy text-sm uppercase">6. Hasil Pengamatan Praktikum Penyaringan Sederhana</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Kondisi Air Sebelum Disaring:</label>
+                <input type="text" id="lkpd-prak-sebelum" oninput="saveLKPD(false)" placeholder="Warna & kekeruhan awal..." class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Kondisi Air Sesudah Disaring:</label>
+                <input type="text" id="lkpd-prak-sesudah" oninput="saveLKPD(false)" placeholder="Warna & kejernihan akhir..." class="w-full px-3 py-2 rounded-xl border border-slate-300" />
+              </div>
+            </div>
+            <textarea id="lkpd-prak-analisis" rows="2" oninput="saveLKPD(false)" placeholder="Apa persamaan dan perbedaan alat penyaring ini dengan ginjal manusia?" class="w-full p-3 rounded-xl border border-slate-300 text-sm mt-2"></textarea>
+          </div>
+
+          <!-- 7. Kesimpulan & Refleksi -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1">
+              <h4 class="font-bold text-navy text-sm uppercase">7. Kesimpulan Pembelajaran</h4>
+              <textarea id="lkpd-kesimpulan" rows="3" oninput="saveLKPD(false)" placeholder="Tuliskan kesimpulanmu..." class="w-full p-3 rounded-xl border border-slate-300 text-sm"></textarea>
+            </div>
+            <div class="space-y-1">
+              <h4 class="font-bold text-navy text-sm uppercase">8. Refleksi Diri</h4>
+              <textarea id="lkpd-refleksi" rows="3" oninput="saveLKPD(false)" placeholder="Hal paling menarik apa yang kamu pelajari hari ini?" class="w-full p-3 rounded-xl border border-slate-300 text-sm"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 8. MENU 6: EVALUASI (25 SOAL LENGKAP + PEMBAHASAN)                -->
+      <!-- ================================================================= -->
+      <div id="view-evaluasi" class="hidden space-y-6 fade-in">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-ice/15 pb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-rose-400">Misi 6 • Ujian Akhir Kompetensi</span>
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">Evaluasi Sistem Ekskresi (25 Soal)</h2>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <!-- Pengaturan KKM Guru -->
+            <div class="bg-navy-card border border-ice/20 px-3 py-1.5 rounded-xl flex items-center gap-2 text-xs">
+              <label for="kkm-input" class="text-ice/80 font-semibold">KKM Guru:</label>
+              <input type="number" id="kkm-input" value="75" min="50" max="100" class="w-14 bg-navy-dark border border-turquoise text-gold font-bold text-center rounded-lg py-1" />
+            </div>
+            <button onclick="navigateTo('home')" class="bg-navy-card hover:bg-navy-light border border-ice/20 px-4 py-2 rounded-xl text-sm font-semibold text-ice flex items-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-arrow-left"></i> Kembali
+            </button>
+          </div>
+        </div>
+
+        <!-- Hasil Evaluasi (Tersembunyi sampai tombol Selesai diklik) -->
+        <div id="eval-result-panel" class="hidden bg-navy-card border-2 border-gold rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5 fade-in">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left space-y-2">
+              <span id="eval-status-badge" class="inline-block px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">STATUS</span>
+              <h3 class="text-2xl sm:text-3xl font-display font-bold text-white">Hasil Evaluasi Kamu</h3>
+              <p id="eval-recommendation" class="text-sm text-ice/90 max-w-2xl"></p>
+            </div>
+            <div class="flex items-center gap-4 bg-navy-dark p-5 rounded-3xl border border-gold/40">
+              <div class="text-center">
+                <div class="text-xs text-ice/60 uppercase">Nilai Akhir</div>
+                <div id="eval-final-score" class="text-4xl sm:text-5xl font-display font-extrabold text-gold">0</div>
+              </div>
+              <div class="h-12 w-px bg-ice/15"></div>
+              <div class="text-xs space-y-1 text-ice/80">
+                <div>Benar: <strong id="eval-correct-count" class="text-emerald-400">0</strong> / 25</div>
+                <div>Salah: <strong id="eval-wrong-count" class="text-rose-400">0</strong> / 25</div>
+                <div>KKM: <strong id="eval-kkm-display" class="text-turquoise">75</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3 pt-2">
+            <button onclick="initEvaluation(true)" class="bg-turquoise hover:bg-turquoise-dark text-navy-dark font-bold px-5 py-2.5 rounded-xl text-sm flex items-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-shuffle"></i> Ulangi Evaluasi (Acak Soal)
+            </button>
+          </div>
+        </div>
+
+        <!-- Daftar 25 Soal -->
+        <div id="eval-questions-container" class="space-y-5">
+          <!-- Diisi otomatis via JS -->
+        </div>
+
+        <!-- Tombol Submit Evaluasi -->
+        <div id="eval-submit-bar" class="bg-navy-card border border-turquoise/40 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span class="text-sm text-ice/85"><i class="fa-solid fa-circle-info text-turquoise mr-1"></i> Pastikan semua 25 soal telah dijawab sebelum menekan tombol selesai.</span>
+          <button onclick="submitEvaluation()" class="w-full sm:w-auto bg-gold hover:bg-gold-dark text-navy-dark font-display font-bold text-base px-8 py-3.5 rounded-2xl shadow-lg transition cursor-pointer">
+            <i class="fa-solid fa-check-double mr-2"></i> Selesai & Lihat Nilai
+          </button>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 9. MENU 7: PENGEMBANG                                             -->
+      <!-- ================================================================= -->
+      <div id="view-pengembang" class="hidden space-y-6 fade-in">
+        <div class="flex items-center justify-between border-b border-ice/15 pb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-300">Misi 7 • Identitas Penyusun</span>
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">Profil Pengembang Media</h2>
+          </div>
+          <button onclick="navigateTo('home')" class="bg-navy-card hover:bg-navy-light border border-ice/20 px-4 py-2 rounded-xl text-sm font-semibold text-ice flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+          </button>
+        </div>
+
+        <div class="max-w-3xl mx-auto bg-ice text-navy-dark rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-gold/50 space-y-6">
+          <div class="flex flex-col sm:flex-row items-center gap-6">
+            <div class="w-24 h-24 rounded-3xl bg-navy text-gold flex items-center justify-center text-4xl font-display font-bold shadow-lg border-4 border-turquoise flex-shrink-0">
+              <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+            <div class="text-center sm:text-left space-y-1">
+              <span class="inline-block bg-turquoise/20 text-navy font-bold text-xs px-3 py-1 rounded-full">Guru IPA / Biologi</span>
+              <h3 class="text-2xl sm:text-3xl font-display font-bold text-navy">Rahmatina, S.Ei.</h3>
+              <p class="text-base font-semibold text-turquoise-dark"><i class="fa-solid fa-school mr-1.5"></i>SMAP 2 Kalianda</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            <div class="bg-white p-4 rounded-2xl border border-navy/10">
+              <span class="text-xs text-slate-500 block">Judul Media Pembelajaran</span>
+              <strong class="text-navy">Misteri Sistem Ekskresi Manusia</strong>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-navy/10">
+              <span class="text-xs text-slate-500 block">Sasaran Kurikulum</span>
+              <strong class="text-navy">Peserta Didik Kelas VII • Fase D</strong>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-navy/10 space-y-3 text-sm leading-relaxed">
+            <h4 class="font-display font-bold text-navy text-base">Tujuan Pengembangan MPI</h4>
+            <p>
+              Media Pembelajaran Interaktif (MPI) ini dirancang untuk menghadirkan pengalaman belajar sains yang aktif, visual, dan menyenangkan. Peserta didik diajak tidak sekadar membaca teks, melainkan mengeksplorasi anatomi organ ekskresi, menyimulasikan perjalanan darah di dalam nefron ginjal, melakukan praktikum penyaringan virtual, mengasah pemahaman lewat permainan edukatif, serta mendokumentasikan hasil belajar dalam LKPD digital.
+            </p>
+            <div class="bg-navy text-ice p-4 rounded-xl italic text-xs sm:text-sm">
+              “Terima kasih kepada seluruh peserta didik hebat SMAP 2 Kalianda. Teruslah bertanya, bereksperimen, dan menjaga kesehatan tubuh sebagai anugerah Tuhan Yang Maha Esa!” — <strong>Ibu Rahmatina, S.Ei.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- 10. MENU 8: PENGATURAN AUDIO                                      -->
+      <!-- ================================================================= -->
+      <div id="view-audio" class="hidden space-y-6 fade-in">
+        <div class="flex items-center justify-between border-b border-ice/15 pb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-teal-300">Misi 8 • Sistem Suara</span>
+            <h2 class="text-2xl sm:text-3xl font-display font-bold text-white">Pengaturan Audio & Narator</h2>
+          </div>
+          <button onclick="navigateTo('home')" class="bg-navy-card hover:bg-navy-light border border-ice/20 px-4 py-2 rounded-xl text-sm font-semibold text-ice flex items-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-arrow-left"></i> Kembali
+          </button>
+        </div>
+
+        <div class="max-w-2xl mx-auto bg-navy-card border-2 border-turquoise/40 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+          <!-- Saklar Utama -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between bg-navy-dark p-4 rounded-2xl border border-ice/10">
+              <div>
+                <h4 class="font-bold text-white text-sm sm:text-base"><i class="fa-solid fa-comment-dots text-turquoise mr-2"></i>Narasi Suara (Text-to-Speech)</h4>
+                <p class="text-xs text-ice/65">Membacakan materi, simulasi, dan petunjuk praktikum dalam Bahasa Indonesia.</p>
+              </div>
+              <input type="checkbox" id="set-tts-enabled" checked onchange="updateAudioSettings()" class="w-6 h-6 accent-turquoise cursor-pointer" />
+            </div>
+
+            <div class="flex items-center justify-between bg-navy-dark p-4 rounded-2xl border border-ice/10">
+              <div>
+                <h4 class="font-bold text-white text-sm sm:text-base"><i class="fa-solid fa-bell text-gold mr-2"></i>Efek Suara Interaktif (SFX)</h4>
+                <p class="text-xs text-ice/65">Suara klik tombol, jawaban benar/salah pada game, dan tetesan air praktikum.</p>
+              </div>
+              <input type="checkbox" id="set-sfx-enabled" checked onchange="updateAudioSettings()" class="w-6 h-6 accent-turquoise cursor-pointer" />
+            </div>
+
+            <div class="flex items-center justify-between bg-navy-dark p-4 rounded-2xl border border-ice/10">
+              <div>
+                <h4 class="font-bold text-white text-sm sm:text-base"><i class="fa-solid fa-music text-sky-400 mr-2"></i>Musik Latar Sains Lembut</h4>
+                <p class="text-xs text-ice/65">Alunan nada ambient lembut untuk menemani eksplorasi belajar.</p>
+              </div>
+              <input type="checkbox" id="set-bgm-enabled" onchange="toggleAmbientMusic(this.checked)" class="w-6 h-6 accent-turquoise cursor-pointer" />
+            </div>
+          </div>
+
+          <!-- Slider Volume & Kecepatan -->
+          <div class="bg-navy-dark p-5 rounded-2xl border border-ice/10 space-y-4">
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>Volume Suara & Narasi</span>
+                <span id="vol-label" class="text-turquoise">100%</span>
+              </div>
+              <input type="range" id="set-volume" min="0" max="1" step="0.1" value="1" oninput="updateAudioSettings()" class="w-full accent-turquoise cursor-pointer" />
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1">
+                <span>Kecepatan Bicara Narator</span>
+                <span id="rate-label" class="text-gold">0.95x (Normal Ramah Siswa)</span>
+              </div>
+              <input type="range" id="set-rate" min="0.7" max="1.3" step="0.05" value="0.95" oninput="updateAudioSettings()" class="w-full accent-gold cursor-pointer" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold mb-1">Pilihan Suara Browser (Bahasa Indonesia):</label>
+              <select id="voice-select" class="w-full bg-navy-card border border-ice/20 rounded-xl px-3 py-2 text-xs sm:text-sm text-white outline-none">
+                <option value="">Otomatis (Indonesia id-ID)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Tombol Uji Coba -->
+          <div class="flex flex-wrap gap-3">
+            <button onclick="testNarratorVoice()" class="flex-1 bg-turquoise hover:bg-turquoise-dark text-navy-dark font-bold py-3 px-4 rounded-2xl text-sm flex items-center justify-center gap-2 shadow cursor-pointer">
+              <i class="fa-solid fa-volume-high"></i> Uji Coba Suara Narator
+            </button>
+            <button onclick="stopSpeech()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-4 rounded-2xl text-sm flex items-center justify-center gap-2 cursor-pointer">
+              <i class="fa-solid fa-stop"></i> Hentikan Suara
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-dark border-t border-ice/10 py-4 px-4 text-center text-xs text-ice/60 no-print">
+      <p>MPI <strong>Misteri Sistem Ekskresi Manusia</strong> • IPA/Biologi Kelas VII Fase D • Disusun oleh <strong>Rahmatina, S.Ei.</strong> (SMAP 2 Kalianda)</p>
+    </footer>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT UTAMA (LOGIKA LENGKAP INTERAKTIF, AUDIO, SIMULASI, GAME)   -->
+  <!-- ===================================================================== -->
+  <script>
+    /* =========================================================================
+       1. STATE GLOBAL & SISTEM PROGRES SISWA
+       ========================================================================= */
+    const appState = {
+      visitedMenus: new Set(),
+      totalScore: 0,
+      stars: 0,
+      currentMateriIdx: 0,
+      audio: {
+        ttsEnabled: true,
+        sfxEnabled: true,
+        bgmEnabled: false,
+        volume: 1.0,
+        rate: 0.95,
+        selectedVoiceURI: ''
+      }
+    };
+
+    function addPoints(pts, starAdd = 0) {
+      appState.totalScore += pts;
+      appState.stars += starAdd;
+      document.getElementById('header-score').textContent = appState.totalScore;
+      document.getElementById('header-stars').textContent = appState.stars;
+    }
+
+    function updateMissionProgress(menuKey) {
+      if (menuKey && menuKey !== 'home') {
+        appState.visitedMenus.add(menuKey);
+      }
+      const count = appState.visitedMenus.size;
+      const pct = Math.round((count / 8) * 100);
+      document.getElementById('home-progress-text').textContent = `${count} / 8 Misi`;
+      document.getElementById('home-progress-bar').style.width = `${pct}%`;
+    }
+
+    function showToast(msg, type = 'success') {
+      const box = document.getElementById('toast-box');
+      const icon = document.getElementById('toast-icon');
+      const text = document.getElementById('toast-msg');
+      text.textContent = msg;
+      icon.className = type === 'error'
+        ? 'fa-solid fa-circle-exclamation text-rose-400 text-xl'
+        : 'fa-solid fa-circle-check text-turquoise text-xl';
+      box.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => box.classList.add('hidden'), 3200);
+    }
+
+    /* =========================================================================
+       2. SISTEM AUDIO (WEB SPEECH API ID-ID & WEB AUDIO API SFX + BGM)
+       ========================================================================= */
+    let audioCtx = null;
+    let bgmInterval = null;
+    let lastSpokenText = '';
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playSFX(type) {
+      if (!appState.audio.sfxEnabled) return;
+      initAudioContext();
+      if (!audioCtx) return;
+
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      const vol = appState.audio.volume * 0.25;
+
+      if (type === 'click') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(520, now);
+        osc.frequency.exponentialRampToValueAtTime(780, now + 0.08);
+        gain.gain.setValueAtTime(vol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+        osc.start(now);
+        osc.stop(now + 0.09);
+      } else if (type === 'correct') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(523.25, now); // C5
+        osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+        osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+        gain.gain.setValueAtTime(vol * 1.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+        osc.start(now);
+        osc.stop(now + 0.4);
+      } else if (type === 'wrong') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.linearRampToValueAtTime(150, now + 0.25);
+        gain.gain.setValueAtTime(vol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+        osc.start(now);
+        osc.stop(now + 0.28);
+      } else if (type === 'water') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(340, now);
+        osc.frequency.exponentialRampToValueAtTime(680, now + 0.18);
+        gain.gain.setValueAtTime(vol * 0.8, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+        osc.start(now);
+        osc.stop(now + 0.2);
+      }
+    }
+
+    function toggleAmbientMusic(enable) {
+      appState.audio.bgmEnabled = enable;
+      if (enable) {
+        initAudioContext();
+        const notes = [261.63, 329.63, 392.00, 493.88, 392.00, 329.63];
+        let step = 0;
+        if (bgmInterval) clearInterval(bgmInterval);
+        bgmInterval = setInterval(() => {
+          if (!appState.audio.bgmEnabled || !audioCtx) return;
+          const now = audioCtx.currentTime;
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(notes[step % notes.length], now);
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.linearRampToValueAtTime(appState.audio.volume * 0.04, now + 0.4);
+          gain.gain.exponentialRampToValueAtTime(0.0005, now + 1.8);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 1.9);
+          step++;
+        }, 1600);
+        showToast('Musik latar sains lembut dinyalakan');
+      } else {
+        if (bgmInterval) clearInterval(bgmInterval);
+        bgmInterval = null;
+      }
+    }
+
+    // Populasi Suara Web Speech API Bahasa Indonesia
+    function populateVoices() {
+      if (!('speechSynthesis' in window)) return;
+      const voices = window.speechSynthesis.getVoices();
+      const select = document.getElementById('voice-select');
+      if (!select) return;
+      const idVoices = voices.filter(v => v.lang.toLowerCase().includes('id'));
+      const listToUse = idVoices.length > 0 ? idVoices : voices;
+      select.innerHTML = '<option value="">Otomatis (Indonesia id-ID)</option>';
+      listToUse.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v.voiceURI;
+        opt.textContent = `${v.name} (${v.lang})`;
+        select.appendChild(opt);
+      });
+    }
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = populateVoices;
+    }
+
+    function speakText(text) {
+      lastSpokenText = text;
+      if (!appState.audio.ttsEnabled) {
+        showToast('Narasi suara sedang dimatikan di Pengaturan Audio.', 'error');
+        return;
+      }
+      if (!('speechSynthesis' in window)) {
+        showToast('Browser tidak mendukung narasi suara otomatis.', 'error');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'id-ID';
+      utter.volume = appState.audio.volume;
+      utter.rate = appState.audio.rate;
+
+      const voices = window.speechSynthesis.getVoices();
+      if (appState.audio.selectedVoiceURI) {
+        const found = voices.find(v => v.voiceURI === appState.audio.selectedVoiceURI);
+        if (found) utter.voice = found;
+      } else {
+        const idVoice = voices.find(v => v.lang.toLowerCase().includes('id'));
+        if (idVoice) utter.voice = idVoice;
+      }
+      window.speechSynthesis.speak(utter);
+    }
+
+    function togglePauseSpeech() {
+      if (!('speechSynthesis' in window)) return;
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      } else if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.pause();
+      }
+    }
+
+    function repeatSpeech() {
+      if (lastSpokenText) speakText(lastSpokenText);
+    }
+
+    function stopSpeech() {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    }
+
+    function updateAudioSettings() {
+      appState.audio.ttsEnabled = document.getElementById('set-tts-enabled').checked;
+      appState.audio.sfxEnabled = document.getElementById('set-sfx-enabled').checked;
+      appState.audio.volume = parseFloat(document.getElementById('set-volume').value);
+      appState.audio.rate = parseFloat(document.getElementById('set-rate').value);
+      appState.audio.selectedVoiceURI = document.getElementById('voice-select').value;
+
+      document.getElementById('vol-label').textContent = `${Math.round(appState.audio.volume * 100)}%`;
+      document.getElementById('rate-label').textContent = `${appState.audio.rate}x`;
+      syncQuickAudioUI();
+    }
+
+    function toggleQuickAudio() {
+      const anyOn = appState.audio.ttsEnabled || appState.audio.sfxEnabled;
+      const nextState = !anyOn;
+      appState.audio.ttsEnabled = nextState;
+      appState.audio.sfxEnabled = nextState;
+      document.getElementById('set-tts-enabled').checked = nextState;
+      document.getElementById('set-sfx-enabled').checked = nextState;
+      if (!nextState) {
+        stopSpeech();
+        toggleAmbientMusic(false);
+        document.getElementById('set-bgm-enabled').checked = false;
+      }
+      syncQuickAudioUI();
+      showToast(nextState ? 'Audio & Narasi Diaktifkan' : 'Semua Audio Dimatikan');
+    }
+
+    function syncQuickAudioUI() {
+      const isOn = appState.audio.ttsEnabled || appState.audio.sfxEnabled;
+      const icon = document.getElementById('quick-audio-icon');
+      const label = document.getElementById('quick-audio-label');
+      icon.className = isOn ? 'fa-solid fa-volume-high text-turquoise' : 'fa-solid fa-volume-xmark text-rose-400';
+      label.textContent = isOn ? 'Audio ON' : 'Audio OFF';
+    }
+
+    function testNarratorVoice() {
+      speakText('Halo Penjelajah Sains! Selamat datang di media pembelajaran Misteri Sistem Ekskresi Manusia bersama Ibu Rahmatina dari SMAP 2 Kalianda.');
+    }
+
+    /* =========================================================================
+       3. NAVIGASI SPA & START APP
+       ========================================================================= */
+    function startLearningApp() {
+      initAudioContext();
+      populateVoices();
+      playSFX('correct');
+      document.getElementById('splash-screen').classList.add('hidden');
+      document.getElementById('main-app').classList.remove('hidden');
+      navigateTo('home');
+      speakText('Halo Penjelajah Sains! Siapkah kamu mengungkap rahasia bagaimana tubuh membuang zat sisa? Silakan pilih misi belajarmu.');
+    }
+
+    function navigateTo(viewId) {
+      playSFX('click');
+      stopSpeech();
+      const views = ['home', 'materi', 'simulasi', 'praktikum', 'game', 'lkpd', 'evaluasi', 'pengembang', 'audio'];
+      views.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) el.classList.add('hidden');
+      });
+      const target = document.getElementById(`view-${viewId}`);
+      if (target) target.classList.remove('hidden');
+
+      updateMissionProgress(viewId);
+
+      if (viewId === 'materi') renderMateri(appState.currentMateriIdx);
+      if (viewId === 'simulasi') {
+        resizeSimCanvas();
+        if (!simRunning) simControl('start');
+      }
+      if (viewId === 'game') selectGame(1);
+      if (viewId === 'evaluasi' && !evalInitialized) initEvaluation(false);
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* =========================================================================
+       4. DATA & LOGIKA MENU 1: MATERI (7 SUBBAB + DIAGRAM INTERAKTIF + KUIS)
+       ========================================================================= */
+    const materiData = [
+      {
+        title: '1. Pengertian Sistem Ekskresi',
+        icon: 'fa-dna',
+        narration: 'Pengertian sistem ekskresi. Sistem ekskresi adalah proses pengeluaran zat-zat sisa metabolisme yang sudah tidak diperlukan lagi oleh tubuh. Jika zat sisa ini menumpuk, akan bersifat racun bagi tubuh. Berbeda dengan defekasi yaitu pembuangan feses sisa pencernaan, dan sekresi yaitu pengeluaran zat yang masih berguna seperti enzim dan hormon.',
+        html: `
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-navy">1. Pengertian Sistem Ekskresi</h3>
+          <p class="text-sm sm:text-base leading-relaxed">
+            Setiap hari tubuh kita melakukan ribuan reaksi kimia metabolisme untuk menghasilkan energi. Reaksi tersebut menghasilkan <strong>zat sisa metabolisme</strong> seperti karbon dioksida, urea, garam mineral berlebih, dan air.
+          </p>
+          <div class="bg-turquoise/15 border-l-4 border-turquoise p-4 rounded-xl text-sm">
+            <strong>Definisi Utama:</strong> <strong>Sistem ekskresi</strong> adalah sistem organ yang bertugas mengeluarkan zat-zat sisa hasil metabolisme yang sudah tidak berguna dan berpotensi menjadi racun jika menumpuk di dalam tubuh.
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm pt-1">
+            <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+              <span class="font-bold text-turquoise-dark block mb-1">1. Ekskresi</span>
+              Pengeluaran zat sisa metabolisme sel (contoh: urine, keringat, CO₂).
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+              <span class="font-bold text-amber-600 block mb-1">2. Sekresi</span>
+              Pengeluaran getah/zat oleh kelenjar yang masih berguna (contoh: enzim, hormon).
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+              <span class="font-bold text-rose-600 block mb-1">3. Defekasi</span>
+              Pembuangan sisa pencernaan makanan yang tidak tercerna berupa feses melalui anus.
+            </div>
+          </div>
+        `,
+        quiz: {
+          q: 'Manakah di bawah ini yang merupakan contoh proses ekskresi?',
+          options: [
+            'Pengeluaran feses melalui anus',
+            'Pengeluaran urine dan keringat oleh tubuh',
+            'Pengeluaran enzim amilase di mulut',
+            'Pengeluaran air mata saat menangis'
+          ],
+          correct: 1,
+          explain: 'Benar! Urine dan keringat adalah zat sisa metabolisme yang dibuang melalui sistem ekskresi.'
+        }
+      },
+      {
+        title: '2. Fungsi Sistem Ekskresi',
+        icon: 'fa-shield-heart',
+        narration: 'Fungsi sistem ekskresi manusia. Pertama, membuang zat sisa metabolisme yang beracun seperti urea dan amonia. Kedua, menjaga keseimbangan kadar air dan elektrolit tubuh atau osmoregulasi. Ketiga, menjaga suhu tubuh tetap stabil melalui pengeluaran keringat. Keempat, mempertahankan derajat keasaman atau pH darah.',
+        html: `
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-navy">2. Fungsi Sistem Ekskresi Manusia</h3>
+          <p class="text-sm sm:text-base leading-relaxed">
+            Sistem ekskresi berperan vital menjaga kondisi internal tubuh agar tetap seimbang (<strong>homeostasis</strong>). Berikut empat fungsi utamanya:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-sm">
+            <div class="bg-white p-4 rounded-2xl border border-navy/10 flex gap-3">
+              <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold flex-shrink-0">1</div>
+              <div>
+                <strong class="text-navy block">Membuang Racun Metabolisme</strong>
+                Mengeluarkan urea, asam urat, amonia, dan karbon dioksida agar sel tubuh tidak keracunan.
+              </div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-navy/10 flex gap-3">
+              <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center font-bold flex-shrink-0">2</div>
+              <div>
+                <strong class="text-navy block">Osmoregulasi (Keseimbangan Air)</strong>
+                Mengatur jumlah air dan garam mineral dalam darah agar cairan tubuh tidak kekurangan atau berlebih.
+              </div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-navy/10 flex gap-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold flex-shrink-0">3</div>
+              <div>
+                <strong class="text-navy block">Termoregulasi (Pengatur Suhu)</strong>
+                Penguapan keringat di permukaan kulit membantu menurunkan suhu tubuh saat cuaca panas atau berolahraga.
+              </div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-navy/10 flex gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold flex-shrink-0">4</div>
+              <div>
+                <strong class="text-navy block">Menjaga pH Darah</strong>
+                Mengatur pembuangan ion hidrogen (H⁺) dan bikarbonat agar keasaman darah tetap normal (sekitar 7,4).
+              </div>
+            </div>
+          </div>
+        `,
+        quiz: {
+          q: 'Kemampuan sistem ekskresi dalam mengatur keseimbangan kadar air dan garam mineral dalam tubuh disebut...',
+          options: ['Osmoregulasi', 'Defekasi', 'Sekresi', 'Transpirasi'],
+          correct: 0,
+          explain: 'Tepat! Osmoregulasi adalah pengaturan keseimbangan tekanan osmotik (air dan ion) dalam tubuh.'
+        }
+      },
+      {
+        title: '3. Empat Organ Ekskresi',
+        icon: 'fa-lungs',
+        narration: 'Empat organ ekskresi manusia. Silakan klik pada gambar masing-masing organ untuk melihat detail zat sisa yang dikeluarkan. Ginjal mengeluarkan urine. Kulit mengeluarkan keringat. Paru-paru mengeluarkan karbon dioksida dan uap air. Hati menghasilkan cairan empedu dan mengubah amonia menjadi urea.',
+        html: `
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-navy">3. Empat Organ Ekskresi Manusia</h3>
+          <p class="text-xs sm:text-sm text-slate-700">
+            <strong>Klik salah satu organ pada diagram interaktif di bawah</strong> untuk memunculkan rincian zat sisa dan cara kerjanya:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-white p-4 rounded-2xl border border-navy/15">
+            <div class="md:col-span-5 flex justify-center">
+              <svg viewBox="0 0 220 240" class="w-48 h-auto">
+                <rect x="10" y="10" width="200" height="220" rx="20" fill="#102C46" />
+                <!-- Paru-paru -->
+                <g onclick="selectOrganInfo('paru')" class="pulse-organ">
+                  <path d="M105,40 C80,38 65,55 68,82 C70,95 88,97 104,90 Z" fill="#38BDF8" />
+                  <path d="M115,40 C140,38 155,55 152,82 C150,95 132,97 116,90 Z" fill="#38BDF8" />
+                  <text x="110" y="30" text-anchor="middle" fill="#7DD3FC" font-size="9" font-weight="bold">PARU-PARU (Klik)</text>
+                </g>
+                <!-- Hati -->
+                <g onclick="selectOrganInfo('hati')" class="pulse-organ">
+                  <path d="M68,105 C92,98 132,102 136,116 C137,125 110,134 74,130 Z" fill="#F59E0B" />
+                  <text x="102" y="120" text-anchor="middle" fill="#102C46" font-size="9" font-weight="bold">HATI (Klik)</text>
+                </g>
+                <!-- Ginjal -->
+                <g onclick="selectOrganInfo('ginjal')" class="pulse-organ">
+                  <ellipse cx="82" cy="162" rx="14" ry="20" fill="#EF4444" stroke="#FCA5A5" stroke-width="1.5" />
+                  <ellipse cx="138" cy="162" rx="14" ry="20" fill="#EF4444" stroke="#FCA5A5" stroke-width="1.5" />
+                  <text x="110" y="195" text-anchor="middle" fill="#FCA5A5" font-size="9" font-weight="bold">GINJAL (Klik)</text>
+                </g>
+                <!-- Kulit -->
+                <g onclick="selectOrganInfo('kulit')" class="pulse-organ">
+                  <rect x="28" y="205" width="164" height="18" rx="8" fill="#13B8A6" />
+                  <text x="110" y="217" text-anchor="middle" fill="#102C46" font-size="9" font-weight="bold">LAPISAN KULIT (Klik)</text>
+                </g>
+              </svg>
+            </div>
+            <div id="organ-detail-card" class="md:col-span-7 bg-navy text-ice p-4 rounded-2xl space-y-2">
+              <span class="text-xs bg-turquoise text-navy-dark font-bold px-2.5 py-0.5 rounded-full">Organ Terpilih</span>
+              <h4 id="organ-card-title" class="font-display font-bold text-xl text-gold">Ginjal (Ren)</h4>
+              <p id="organ-card-waste" class="text-xs text-turquoise font-semibold">Zat Sisa: Urine (Air, Urea, Garam Mineral, Asam Urat)</p>
+              <p id="organ-card-desc" class="text-xs sm:text-sm leading-relaxed text-ice/90">
+                Manusia memiliki sepasang ginjal berbentuk seperti kacang merah di rongga perut bagian belakang. Ginjal menyaring darah untuk membuang zat sisa larut air dalam bentuk urine.
+              </p>
+            </div>
+          </div>
+        `,
+        quiz: {
+          q: 'Organ ekskresi yang berfungsi merombak sel darah merah tua menjadi bilirubin (zat warna empedu) serta mengubah amonia menjadi urea adalah...',
+          options: ['Paru-paru', 'Hati', 'Kulit', 'Ginjal'],
+          correct: 1,
+          explain: 'Benar! Hati merombak hemoglobin eritrosit tua menjadi bilirubin/biliverdin dan menetralkan amonia menjadi urea.'
+        }
+      },
+      {
+        title: '4. Struktur Ginjal & Nefron',
+        icon: 'fa-filter',
+        narration: 'Struktur ginjal dan nefron. Ginjal terbagi menjadi tiga lapisan utama dari luar ke dalam, yaitu korteks atau kulit ginjal, medula atau sumsum ginjal, dan pelvis renalis atau rongga ginjal. Di dalam korteks dan medula terdapat sekitar satu juta unit penyaring mikroskopis yang disebut nefron.',
+        html: `
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-navy">4. Struktur Ginjal & Unit Penyaring (Nefron)</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+            <div class="space-y-2.5 text-xs sm:text-sm">
+              <div class="bg-white p-3 rounded-xl border-l-4 border-rose-500">
+                <strong class="text-navy">1. Korteks (Kulit Ginjal):</strong> Lapisan terluar tempat terdapatnya badan Malpighi (glomerulus & kapsula Bowman).
+              </div>
+              <div class="bg-white p-3 rounded-xl border-l-4 border-amber-500">
+                <strong class="text-navy">2. Medula (Sumsum Ginjal):</strong> Lapisan tengah berbentuk piramida yang berisi lengkung Henle dan tubulus pengumpul.
+              </div>
+              <div class="bg-white p-3 rounded-xl border-l-4 border-gold">
+                <strong class="text-navy">3. Pelvis Renalis (Rongga Ginjal):</strong> Tempat bermuaranya urine sebelum dialirkan ke ureter menuju kandung kemih.
+              </div>
+            </div>
+            <!-- Diagram SVG Nefron Berlabel -->
+            <div class="bg-navy rounded-2xl p-3 text-center">
+              <div class="text-[11px] font-bold text-turquoise mb-1">BAGIAN-BAGIAN NEFRON</div>
+              <svg viewBox="0 0 260 180" class="w-full h-auto">
+                <!-- Kapsula Bowman & Glomerulus -->
+                <circle cx="48" cy="52" r="22" fill="none" stroke="#38BDF8" stroke-width="4" />
+                <circle cx="48" cy="52" r="12" fill="#EF4444" />
+                <!-- Tubulus Proksimal -> Lengkung Henle -> Tubulus Distal -> Kolektivus -->
+                <path d="M70,52 Q90,30 105,52 T130,52 L130,145 Q142,162 154,145 L154,52 Q170,30 185,52 T215,52 L215,160" fill="none" stroke="#F4B942" stroke-width="7" stroke-linecap="round" />
+                <text x="48" y="22" text-anchor="middle" fill="#FCA5A5" font-size="8" font-weight="bold">Glomerulus</text>
+                <text x="105" y="25" text-anchor="middle" fill="#FEF08A" font-size="8" font-weight="bold">T. Proksimal</text>
+                <text x="142" y="172" text-anchor="middle" fill="#7DD3FC" font-size="8" font-weight="bold">Lengkung Henle</text>
+                <text x="185" y="25" text-anchor="middle" fill="#FEF08A" font-size="8" font-weight="bold">T. Distal</text>
+                <text x="235" y="110" text-anchor="middle" fill="#2DD4BF" font-size="8" font-weight="bold" transform="rotate(90 235 110)">T. Kolektivus</text>
+              </svg>
+            </div>
+          </div>
+        `,
+        quiz: {
+          q: 'Unit fungsional terkecil penyaring darah di dalam ginjal berjumlah jutaan disebut...',
+          options: ['Neuron', 'Nefron', 'Alveolus', 'Vili'],
+          correct: 1,
+          explain: 'Benar! Nefron adalah unit penyaring darah di ginjal (jangan tertukar dengan neuron yang merupakan sel saraf).'
+        }
+      },
+      {
+        title: '5. Proses Pembentukan Urine',
+        icon: 'fa-droplet',
+        narration: 'Proses pembentukan urine melalui tiga tahapan berurutan. Tahap pertama filtrasi di glomerulus menghasilkan urine primer. Tahap kedua reabsorpsi di tubulus kontortus proksimal menghasilkan urine sekunder. Tahap ketiga augmentasi di tubulus kontortus distal menghasilkan urine sesungguhnya.',
+        html: `
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-navy">5. Tiga Tahap Pembentukan Urine</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs sm:text-sm border-collapse bg-white rounded-2xl overflow-hidden shadow-sm">
+              <thead>
+                <tr class="bg-navy text-white">
+                  <th class="p-3 text-left">Tahap</th>
+                  <th class="p-3 text-left">Tempat Terjadi</th>
+                  <th class="p-3 text-left">Proses Utama</th>
+                  <th class="p-3 text-left">Hasil</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr>
+                  <td class="p-3 font-bold text-rose-600">1. Filtrasi</td>
+                  <td class="p-3 font-semibold">Glomerulus</td>
+                  <td class="p-3">Penyaringan darah; sel darah & protein besar tertahan.</td>
+                  <td class="p-3"><span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-bold">Urine Primer</span></td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-sky-600">2. Reabsorpsi</td>
+                  <td class="p-3 font-semibold">Tubulus Proksimal</td>
+                  <td class="p-3">Penyerapan kembali glukosa, asam amino, air, dan ion berguna.</td>
+                  <td class="p-3"><span class="bg-sky-100 text-sky-800 px-2 py-0.5 rounded font-bold">Urine Sekunder</span></td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-bold text-amber-600">3. Augmentasi</td>
+                  <td class="p-3 font-semibold">Tubulus Distal</td>
+                  <td class="p-3">Penambahan zat sisa (ion H⁺, K⁺, kreatinin, sisa obat).</td>
+                  <td class="p-3"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">Urine Sesungguhnya</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="bg-navy text-ice p-3.5 rounded-2xl text-xs sm:text-sm flex items-center justify-between gap-3">
+            <span>Ingin melihat pergerakan partikel darah secara langsung?</span>
+            <button onclick="navigateTo('simulasi')" class="bg-turquoise text-navy-dark font-bold px-3.5 py-2 rounded-xl flex-shrink-0 cursor-pointer">
+              Buka Simulasi Nefron →
+            </button>
+          </div>
+        `,
+        quiz: {
+          q: 'Pada orang sehat, glukosa diserap kembali ke dalam darah pada tahap...',
+          options: ['Filtrasi di glomerulus', 'Reabsorpsi di tubulus proksimal', 'Augmentasi di tubulus distal', 'Pengumpulan di pelvis'],
+          correct: 1,
+          explain: 'Tepat! Glukosa dan asam amino diserap kembali seluruhnya pada tahap reabsorpsi di tubulus kontortus proksimal.'
+        }
+      },
+      {
+        title: '6. Gangguan Sistem Ekskresi',
+        icon: 'fa-kit-medical',
+        narration: 'Gangguan dan kelainan pada sistem ekskresi. Batu ginjal disebabkan endapan garam kalsium. Nefritis adalah peradangan nefron akibat infeksi bakteri. Diabetes insipidus menyebabkan penderita sering buang air kecil karena kekurangan hormon ADH. Biang keringat terjadi akibat penyumbatan kelenjar keringat. Sirosis hati adalah kerusakan jaringan hati akibat racun atau alkohol.',
+        html: `
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-navy">6. Gangguan & Penyakit Sistem Ekskresi</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+            <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+              <strong class="text-rose-600 block">🪨 Batu Ginjal (Nefrolitiasis)</strong>
+              Endapan garam kalsium dan asam urat di rongga ginjal akibat kurang minum air putih dan sering menahan buang air kecil.
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+              <strong class="text-rose-600 block">🦠 Nefritis</strong>
+              Peradangan pada nefron (terutama glomerulus) akibat infeksi bakteri <em>Streptococcus</em> sehingga urine mengandung darah/protein.
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+              <strong class="text-amber-600 block">💧 Diabetes Insipidus</strong>
+              Tubuh kekurangan hormon ADH sehingga gagal menyerap air kembali dan penderita memproduksi urine dalam jumlah sangat banyak.
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+              <strong class="text-amber-600 block">🍬 Diabetes Melitus</strong>
+              Kadar gula darah tinggi akibat kekurangan insulin sehingga glukosa lolos masuk ke dalam urine (glukosuria).
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+              <strong class="text-teal-700 block">🌡️ Biang Keringat (Miliaria)</strong>
+              Tersumbatnya saluran kelenjar keringat oleh sel kulit mati atau kotoran sehingga muncul bintik merah gatal.
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-navy/10">
+              <strong class="text-purple-700 block">🫀 Sirosis Hati</strong>
+              Terbentuknya jaringan parut pada hati akibat infeksi hepatitis atau konsumsi alkohol sehingga fungsi detoksifikasi menurun.
+            </div>
+          </div>
+        `,
+        quiz: {
+          q: 'Penyakit yang ditandai dengan sering buang air kecil secara berlebihan akibat kekurangan hormon ADH adalah...',
+          options: ['Batu ginjal', 'Diabetes insipidus', 'Nefritis', 'Sirosis hati'],
+          correct: 1,
+          explain: 'Benar! Hormon ADH (Antidiuretic Hormone) mengatur penyerapan air di tubulus ginjal.'
+        }
+      },
+      {
+        title: '7. Menjaga Kesehatan Organ',
+        icon: 'fa-heart-pulse',
+        narration: 'Cara menjaga kesehatan organ ekskresi. Minum air putih minimal delapan gelas atau dua liter per hari. Tidak menahan keinginan buang air kecil. Mengurangi makanan terlalu asin dan tinggi gula. Rutin berolahraga dan menjaga kebersihan kulit, serta menghindari asap rokok dan alkohol.',
+        html: `
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-navy">7. Pola Hidup Sehat Menjaga Organ Ekskresi</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs sm:text-sm">
+            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex items-start gap-3">
+              <i class="fa-solid fa-glass-water text-sky-500 text-2xl mt-0.5"></i>
+              <div>
+                <strong class="text-navy block">Minum Air Putih Cukup (±2 Liter/Hari)</strong>
+                Membantu ginjal melarutkan zat sisa dan mencegah terbentuknya kristal batu ginjal.
+              </div>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex items-start gap-3">
+              <i class="fa-solid fa-clock text-amber-500 text-2xl mt-0.5"></i>
+              <div>
+                <strong class="text-navy block">Jangan Menahan Buang Air Kecil</strong>
+                Menahan urine terlalu lama memicu infeksi saluran kemih dan pengendapan mineral.
+              </div>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex items-start gap-3">
+              <i class="fa-solid fa-person-running text-turquoise-dark text-2xl mt-0.5"></i>
+              <div>
+                <strong class="text-navy block">Olahraga Teratur & Mandi Bersih</strong>
+                Melancarkan peredaran darah ke paru-paru dan mencegah pori kelenjar keringat tersumbat.
+              </div>
+            </div>
+            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex items-start gap-3">
+              <i class="fa-solid fa-ban-smoking text-rose-500 text-2xl mt-0.5"></i>
+              <div>
+                <strong class="text-navy block">Hindari Rokok, Alkohol & Garam Berlebih</strong>
+                Melindungi paru-paru, mencegah kerusakan sel hati, dan meringankan kerja penyaringan ginjal.
+              </div>
+            </div>
+          </div>
+        `,
+        quiz: {
+          q: 'Kebiasaan baik yang paling efektif untuk mencegah terbentuknya batu ginjal adalah...',
+          options: [
+            'Minum minuman bersoda setiap hari',
+            'Minum air putih minimal 2 liter per hari dan tidak menahan buang air kecil',
+            'Mengonsumsi makanan sangat asin',
+            'Jarang mandi setelah berolahraga'
+          ],
+          correct: 1,
+          explain: 'Sangat tepat! Asupan air putih yang cukup membantu ginjal membuang garam mineral secara lancar.'
+        }
+      }
+    ];
+
+    function renderMateri(idx) {
+      appState.currentMateriIdx = idx;
+      const tabsEl = document.getElementById('materi-tabs');
+      tabsEl.innerHTML = materiData.map((m, i) => `
+        <button onclick="renderMateri(${i})" class="w-full text-left px-4 py-3 rounded-2xl font-semibold text-xs sm:text-sm flex items-center gap-3 transition cursor-pointer ${
+          i === idx
+            ? 'bg-turquoise text-navy-dark font-bold shadow-lg'
+            : 'bg-navy-card hover:bg-navy-light text-ice border border-ice/15'
+        }">
+          <i class="fa-solid ${m.icon} w-5 text-center"></i>
+          <span>${m.title}</span>
+        </button>
+      `).join('');
+
+      const item = materiData[idx];
+      document.getElementById('materi-content-body').innerHTML = item.html;
+      document.getElementById('materi-step-indicator').textContent = `Subbab ${idx + 1} dari ${materiData.length}`;
+
+      // Render Kuis Singkat Subbab
+      document.getElementById('materi-quiz-q').textContent = item.quiz.q;
+      const fb = document.getElementById('materi-quiz-feedback');
+      fb.classList.add('hidden');
+      const optBox = document.getElementById('materi-quiz-options');
+      optBox.innerHTML = item.quiz.options.map((opt, oIdx) => `
+        <button onclick="checkMateriQuiz(${idx}, ${oIdx})" class="text-left p-3 rounded-xl bg-white hover:bg-turquoise/20 border border-navy/15 text-xs sm:text-sm font-medium transition cursor-pointer">
+          <span class="font-bold text-turquoise-dark mr-1.5">${String.fromCharCode(65 + oIdx)}.</span> ${opt}
+        </button>
+      `).join('');
+
+      document.getElementById('btn-prev-materi').disabled = idx === 0;
+      document.getElementById('btn-prev-materi').style.opacity = idx === 0 ? '0.4' : '1';
+      document.getElementById('btn-next-materi').disabled = idx === materiData.length - 1;
+      document.getElementById('btn-next-materi').style.opacity = idx === materiData.length - 1 ? '0.4' : '1';
+    }
+
+    function changeMateriStep(delta) {
+      const next = appState.currentMateriIdx + delta;
+      if (next >= 0 && next < materiData.length) {
+        playSFX('click');
+        stopSpeech();
+        renderMateri(next);
+      }
+    }
+
+    function speakCurrentMateri() {
+      speakText(materiData[appState.currentMateriIdx].narration);
+    }
+
+    function checkMateriQuiz(subIdx, optIdx) {
+      const qObj = materiData[subIdx].quiz;
+      const fb = document.getElementById('materi-quiz-feedback');
+      fb.classList.remove('hidden');
+      if (optIdx === qObj.correct) {
+        playSFX('correct');
+        addPoints(10, 0);
+        fb.className = 'text-xs sm:text-sm font-semibold p-3 rounded-xl bg-emerald-100 text-emerald-900 border border-emerald-400';
+        fb.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> ${qObj.explain} (+10 Poin)`;
+      } else {
+        playSFX('wrong');
+        fb.className = 'text-xs sm:text-sm font-semibold p-3 rounded-xl bg-rose-100 text-rose-900 border border-rose-400';
+        fb.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 mr-1"></i> Kurang tepat, coba pilih jawaban lainnya!`;
+      }
+    }
+
+    function selectOrganInfo(organKey) {
+      playSFX('click');
+      const info = {
+        ginjal: {
+          title: 'Ginjal (Ren)',
+          waste: 'Zat Sisa: Urine (Air, Urea, Garam Mineral, Asam Urat)',
+          desc: 'Sepasang organ berbentuk kacang merah di rongga perut belakang. Ginjal menyaring darah melalui jutaan nefron untuk membentuk urine.'
+        },
+        kulit: {
+          title: 'Kulit (Integumen)',
+          waste: 'Zat Sisa: Keringat (Air, Garam NaCl, dan sedikit Urea)',
+          desc: 'Kelenjar keringat (glandula sudorifera) di lapisan dermis menyerap air dan garam dari kapiler darah lalu mengeluarkannya lewat pori kulit sekaligus mengatur suhu tubuh.'
+        },
+        paru: {
+          title: 'Paru-paru (Pulmo)',
+          waste: 'Zat Sisa: Gas Karbon Dioksida (CO₂) & Uap Air (H₂O)',
+          desc: 'Sisa respirasi seluler diangkut darah menuju alveolus paru-paru dan dikeluarkan saat kita mengembuskan napas (ekspirasi).'
+        },
+        hati: {
+          title: 'Hati (Hepar)',
+          waste: 'Zat Sisa: Cairan Empedu (Bilirubin) & Urea',
+          desc: 'Kelenjar terbesar dalam tubuh yang merombak sel darah merah tua menjadi zat warna empedu serta mengubah amonia beracun menjadi urea.'
+        }
+      }[organKey];
+
+      if (info) {
+        document.getElementById('organ-card-title').textContent = info.title;
+        document.getElementById('organ-card-waste').textContent = info.waste;
+        document.getElementById('organ-card-desc').textContent = info.desc;
+      }
+    }
+
+    /* =========================================================================
+       5. MENU 2: SIMULASI INTERAKTIF NEFRON ("Petualangan di Dalam Ginjal")
+       ========================================================================= */
+    let simCanvas, simCtx;
+    let simRunning = false;
+    let simAnimId = null;
+    let simStage = 1; // 1: Filtrasi, 2: Reabsorpsi, 3: Augmentasi
+    let simParticles = [];
+
+    const simStageInfo = {
+      1: {
+        badge: 'Tahap 1 Aktif: FILTRASI (Glomerulus)',
+        title: 'Tahap 1: Filtrasi di Glomerulus',
+        desc: 'Darah bertekanan tinggi masuk ke glomerulus. Air, glukosa, asam amino, garam, dan urea tersaring ke Kapsula Bowman membentuk Urine Primer. Sel darah merah & protein besar tetap di pembuluh darah.',
+        fluid: 'Merah Darah → Jernih Kekuningan (Urine Primer)',
+        narration: 'Tahap pertama, Filtrasi. Darah masuk ke glomerulus. Molekul kecil seperti air, glukosa, dan urea tersaring masuk ke kapsula Bowman membentuk urine primer, sedangkan sel darah merah dan protein tetap bertahan di dalam pembuluh darah.'
+      },
+      2: {
+        badge: 'Tahap 2 Aktif: REABSORPSI (Tubulus Proksimal)',
+        title: 'Tahap 2: Reabsorpsi di Tubulus Proksimal',
+        desc: 'Urine primer mengalir ke tubulus kontortus proksimal. Zat yang masih dibutuhkan tubuh seperti glukosa, asam amino, air, dan ion penting diserap kembali ke kapiler darah, menghasilkan Urine Sekunder.',
+        fluid: 'Jernih Kekuningan → Kuning Pucat (Urine Sekunder)',
+        narration: 'Tahap kedua, Reabsorpsi. Di sepanjang tubulus kontortus proksimal, zat yang masih berguna bagi tubuh seperti glukosa, asam amino, dan sebagian besar air diserap kembali masuk ke pembuluh darah. Cairan yang tersisa disebut urine sekunder.'
+      },
+      3: {
+        badge: 'Tahap 3 Aktif: AUGMENTASI (Tubulus Distal)',
+        title: 'Tahap 3: Augmentasi di Tubulus Distal',
+        desc: 'Urine sekunder menuju tubulus kontortus distal. Pembuluh darah menambahkan zat sisa yang tidak diperlukan lagi (ion H+, K+, kreatinin, sisa obat) ke tubulus, membentuk Urine Sesungguhnya menuju tubulus kolektivus.',
+        fluid: 'Kuning Pucat → Kuning Pekat (Urine Sesungguhnya)',
+        narration: 'Tahap ketiga, Augmentasi. Di tubulus kontortus distal terjadi penambahan zat sisa seperti ion hidrogen, kalium, dan kreatinin dari darah ke dalam tubulus. Terbentuklah urine sesungguhnya yang mengalir menuju tubulus kolektivus.'
+      }
+    };
+
+    function resizeSimCanvas() {
+      simCanvas = document.getElementById('nephron-canvas');
+      if (!simCanvas) return;
+      const rect = simCanvas.parentElement.getBoundingClientRect();
+      simCanvas.width = rect.width || 650;
+      simCanvas.height = 360;
+      simCtx = simCanvas.getContext('2d');
+      drawNephronFrame();
+    }
+
+    window.addEventListener('resize', () => {
+      if (!document.getElementById('view-simulasi').classList.contains('hidden')) {
+        resizeSimCanvas();
+      }
+    });
+
+    function spawnParticle() {
+      const types = ['rbc', 'glucose', 'urea'];
+      const type = types[Math.floor(Math.random() * types.length)];
+      return {
+        type,
+        t: 0, // progres 0 -> 1
+        speed: 0.003 + Math.random() * 0.002,
+        offsetY: (Math.random() - 0.5) * 10
+      };
+    }
+
+    function setSimStage(stage) {
+      playSFX('click');
+      simStage = stage;
+      [1, 2, 3].forEach(s => {
+        const btn = document.getElementById(`sim-btn-${s}`);
+        if (s === stage) {
+          btn.className = 'w-full text-left p-3.5 rounded-2xl border-2 border-turquoise bg-turquoise/15 transition cursor-pointer';
+        } else {
+          btn.className = 'w-full text-left p-3.5 rounded-2xl border-2 border-navy/15 bg-white hover:border-turquoise transition cursor-pointer';
+        }
+      });
+      const info = simStageInfo[stage];
+      document.getElementById('sim-overlay-badge').textContent = info.badge;
+      document.getElementById('sim-detail-title').textContent = info.title;
+      document.getElementById('sim-detail-desc').textContent = info.desc;
+      document.getElementById('sim-fluid-color').textContent = info.fluid;
+    }
+
+    function narrateSimulationStage() {
+      speakText(simStageInfo[simStage].narration);
+    }
+
+    function simControl(cmd) {
+      playSFX('click');
+      if (cmd === 'start') {
+        if (!simRunning) {
+          simRunning = true;
+          if (simParticles.length === 0) {
+            for (let i = 0; i < 24; i++) {
+              const p = spawnParticle();
+              p.t = i / 24;
+              simParticles.push(p);
+            }
+          }
+          animateNephron();
+        }
+      } else if (cmd === 'pause') {
+        simRunning = false;
+        if (simAnimId) cancelAnimationFrame(simAnimId);
+      } else if (cmd === 'reset') {
+        simRunning = false;
+        if (simAnimId) cancelAnimationFrame(simAnimId);
+        simParticles = [];
+        for (let i = 0; i < 20; i++) {
+          const p = spawnParticle();
+          p.t = i / 20;
+          simParticles.push(p);
+        }
+        drawNephronFrame();
+      }
+    }
+
+    function drawNephronFrame() {
+      if (!simCtx || !simCanvas) return;
+      const w = simCanvas.width;
+      const h = simCanvas.height;
+      simCtx.clearRect(0, 0, w, h);
+
+      // Skala koordinat responsif
+      const sx = w / 650;
+      const sy = h / 360;
+
+      // 1. Pembuluh Darah Arteri & Kapiler Peritubular (Merah)
+      simCtx.strokeStyle = 'rgba(239, 68, 68, 0.55)';
+      simCtx.lineWidth = 14 * sx;
+      simCtx.lineCap = 'round';
+      simCtx.beginPath();
+      simCtx.moveTo(20 * sx, 110 * sy);
+      simCtx.lineTo(125 * sx, 110 * sy);
+      // Lingkaran Glomerulus
+      simCtx.arc(125 * sx, 110 * sy, 22 * sx, 0, Math.PI * 2);
+      // Kapiler Peritubular sejajar di bawah tubulus
+      simCtx.moveTo(147 * sx, 110 * sy);
+      simCtx.lineTo(220 * sx, 175 * sy);
+      simCtx.lineTo(480 * sx, 175 * sy);
+      simCtx.lineTo(610 * sx, 110 * sy);
+      simCtx.stroke();
+
+      // 2. Kapsula Bowman (Biru Muda)
+      simCtx.strokeStyle = '#38BDF8';
+      simCtx.lineWidth = 5 * sx;
+      simCtx.beginPath();
+      simCtx.arc(125 * sx, 110 * sy, 36 * sx, -Math.PI * 0.75, Math.PI * 0.75);
+      simCtx.stroke();
+
+      // 3. Saluran Tubulus Nefron dengan Gradien Perubahan Warna Urine
+      const tubGrad = simCtx.createLinearGradient(160 * sx, 0, 580 * sx, 0);
+      tubGrad.addColorStop(0, '#BAE6FD');    // Urine Primer (Jernih kebiruan)
+      tubGrad.addColorStop(0.5, '#FEF08A');  // Urine Sekunder (Kuning pucat)
+      tubGrad.addColorStop(1, '#F59E0B');    // Urine Sesungguhnya (Kuning pekat)
+
+      simCtx.strokeStyle = tubGrad;
+      simCtx.lineWidth = 22 * sx;
+      simCtx.lineJoin = 'round';
+      simCtx.beginPath();
+      simCtx.moveTo(160 * sx, 110 * sy);
+      // Tubulus Proksimal
+      simCtx.lineTo(270 * sx, 110 * sy);
+      // Lengkung Henle turun & naik
+      simCtx.lineTo(310 * sx, 285 * sy);
+      simCtx.lineTo(360 * sx, 285 * sy);
+      simCtx.lineTo(400 * sx, 110 * sy);
+      // Tubulus Distal
+      simCtx.lineTo(520 * sx, 110 * sy);
+      // Tubulus Kolektivus (ke bawah)
+      simCtx.lineTo(520 * sx, 315 * sy);
+      simCtx.stroke();
+
+      // Highlight Zona Tahap yang Dipilih
+      simCtx.save();
+      simCtx.strokeStyle = '#13B8A6';
+      simCtx.lineWidth = 2.5;
+      simCtx.setLineDash([5, 5]);
+      if (simStage === 1) {
+        simCtx.strokeRect(80 * sx, 62 * sy, 95 * sx, 96 * sy);
+      } else if (simStage === 2) {
+        simCtx.strokeRect(185 * sx, 78 * sy, 120 * sx, 115 * sy);
+      } else if (simStage === 3) {
+        simCtx.strokeRect(395 * sx, 78 * sy, 145 * sx, 115 * sy);
+      }
+      simCtx.restore();
+
+      // Label Anatomi pada Canvas
+      simCtx.fillStyle = '#E9F4F8';
+      simCtx.font = `bold ${Math.max(10, Math.round(11 * sx))}px Inter, sans-serif`;
+      simCtx.textAlign = 'center';
+      simCtx.fillText('1. Glomerulus', 125 * sx, 54 * sy);
+      simCtx.fillText('2. Tubulus Proksimal', 235 * sx, 84 * sy);
+      simCtx.fillText('Lengkung Henle', 335 * sx, 312 * sy);
+      simCtx.fillText('3. Tubulus Distal', 460 * sx, 84 * sy);
+      simCtx.fillText('Tubulus Kolektivus', 575 * sx, 260 * sy);
+      simCtx.fillStyle = '#94A3B8';
+      simCtx.fillText('Kapiler Peritubular (Darah)', 335 * sx, 200 * sy);
+
+      // Gambar Partikel Bergerak
+      simParticles.forEach(p => {
+        let px = 0, py = 0;
+        if (p.type === 'rbc') {
+          // Sel darah merah tetap di jalur pembuluh darah (tidak masuk tubulus)
+          if (p.t < 0.25) {
+            px = (20 + (p.t / 0.25) * 125) * sx;
+            py = (110 + p.offsetY) * sy;
+          } else if (p.t < 0.75) {
+            const sub = (p.t - 0.25) / 0.5;
+            px = (145 + sub * 335) * sx;
+            py = (175 + p.offsetY * 0.6) * sy;
+          } else {
+            const sub = (p.t - 0.75) / 0.25;
+            px = (480 + sub * 130) * sx;
+            py = (175 - sub * 65 + p.offsetY * 0.6) * sy;
+          }
+          simCtx.fillStyle = '#EF4444';
+        } else if (p.type === 'glucose') {
+          // Glukosa tersaring masuk ke tubulus proksimal, lalu diserap kembali (Reabsorpsi) ke kapiler!
+          if (p.t < 0.2) {
+            px = (20 + (p.t / 0.2) * 105) * sx;
+            py = 110 * sy;
+          } else if (p.t < 0.45) {
+            const sub = (p.t - 0.2) / 0.25;
+            px = (125 + sub * 110) * sx;
+            py = (110 + p.offsetY * 0.5) * sy;
+          } else if (p.t < 0.6) {
+            // Menyerap turun ke kapiler darah
+            const sub = (p.t - 0.45) / 0.15;
+            px = (235 + sub * 20) * sx;
+            py = (110 + sub * 65) * sy;
+          } else {
+            const sub = (p.t - 0.6) / 0.4;
+            px = (255 + sub * 350) * sx;
+            py = (175 - (sub > 0.6 ? (sub - 0.6) * 150 : 0)) * sy;
+          }
+          simCtx.fillStyle = '#38BDF8';
+        } else {
+          // Urea & Zat Sisa: tersaring + bertambah di Augmentasi keluar ke Kolektivus
+          if (p.t < 0.2) {
+            px = (20 + (p.t / 0.2) * 105) * sx;
+            py = 110 * sy;
+          } else if (p.t < 0.38) {
+            const sub = (p.t - 0.2) / 0.18;
+            px = (125 + sub * 145) * sx;
+            py = (110 + p.offsetY * 0.5) * sy;
+          } else if (p.t < 0.52) {
+            const sub = (p.t - 0.38) / 0.14;
+            px = (270 + sub * 40) * sx;
+            py = (110 + sub * 175) * sy;
+          } else if (p.t < 0.66) {
+            const sub = (p.t - 0.52) / 0.14;
+            px = (360 + sub * 40) * sx;
+            py = (285 - sub * 175) * sy;
+          } else if (p.t < 0.84) {
+            const sub = (p.t - 0.66) / 0.18;
+            px = (400 + sub * 120) * sx;
+            py = (110 + p.offsetY * 0.5) * sy;
+          } else {
+            const sub = (p.t - 0.84) / 0.16;
+            px = (520 + p.offsetY * 0.4) * sx;
+            py = (110 + sub * 205) * sy;
+          }
+          simCtx.fillStyle = '#FBBF24';
+        }
+
+        simCtx.beginPath();
+        simCtx.arc(px, py, (p.type === 'rbc' ? 5.5 : 4.2) * sx, 0, Math.PI * 2);
+        simCtx.fill();
+      });
+    }
+
+    function animateNephron() {
+      if (!simRunning) return;
+      simParticles.forEach(p => {
+        p.t += p.speed;
+        if (p.t > 1) {
+          Object.assign(p, spawnParticle());
+        }
+      });
+      drawNephronFrame();
+      simAnimId = requestAnimationFrame(animateNephron);
+    }
+
+    /* =========================================================================
+       6. MENU 3: PRAKTIKUM VIRTUAL ("Model Penyaringan Sederhana")
+       ========================================================================= */
+    const prakState = {
+      layers: [],
+      poured: false
+    };
+
+    function addFilterLayer(layer) {
+      const expectedOrder = ['kapas', 'pasir', 'kerikil'];
+      const nextExpected = expectedOrder[prakState.layers.length];
+
+      if (prakState.layers.includes(layer)) {
+        showToast('Lapisan tersebut sudah dimasukkan ke dalam botol!', 'error');
+        return;
+      }
+
+      if (layer !== nextExpected) {
+        playSFX('wrong');
+        showToast(`Urutan kurang tepat! Masukkan ${nextExpected.toUpperCase()} terlebih dahulu dari bawah.`, 'error');
+        return;
+      }
+
+      playSFX('click');
+      prakState.layers.push(layer);
+      document.getElementById(`layer-${layer}-svg`).classList.remove('hidden');
+      document.getElementById(`btn-layer-${layer}`).classList.add('border-emerald-400', 'bg-emerald-950/60');
+
+      const statusNames = prakState.layers.map(l => l.toUpperCase()).join(' → ');
+      document.getElementById('prak-status-text').textContent = `Lapisan terpasang: ${statusNames}`;
+    }
+
+    function pourDirtyWater() {
+      if (prakState.layers.length < 3) {
+        playSFX('wrong');
+        showToast('Susun ketiga lapisan (Kapas, Pasir, Kerikil) terlebih dahulu sebelum menuang air!', 'error');
+        return;
+      }
+      if (prakState.poured) {
+        showToast('Air sudah disaring! Klik Reset Alat jika ingin mencoba lagi.');
+        return;
+      }
+
+      prakState.poured = true;
+      playSFX('water');
+      document.getElementById('prak-dirty-stream').classList.remove('hidden');
+      document.getElementById('prak-status-text').textContent = 'Menyaring air keruh melalui kerikil, pasir, dan kapas...';
+
+      setTimeout(() => {
+        playSFX('water');
+        document.getElementById('prak-clean-drops').classList.remove('hidden');
+      }, 650);
+
+      setTimeout(() => {
+        playSFX('correct');
+        addPoints(30, 1);
+        document.getElementById('prak-dirty-stream').classList.add('hidden');
+        document.getElementById('prak-clean-drops').classList.add('hidden');
+        document.getElementById('prak-water-result').setAttribute('opacity', '0.88');
+        document.getElementById('prak-result-label').setAttribute('opacity', '1');
+        document.getElementById('prak-status-text').innerHTML = '✅ Berhasil! Air keluar jauh lebih jernih karena partikel tanah tertahan lapisan penyaring (+30 Poin & 1 Bintang).';
+      }, 1400);
+    }
+
+    function resetPraktikumSim() {
+      playSFX('click');
+      prakState.layers = [];
+      prakState.poured = false;
+      ['kapas', 'pasir', 'kerikil'].forEach(l => {
+        document.getElementById(`layer-${l}-svg`).classList.add('hidden');
+        document.getElementById(`btn-layer-${l}`).classList.remove('border-emerald-400', 'bg-emerald-950/60');
+      });
+      document.getElementById('prak-dirty-stream').classList.add('hidden');
+      document.getElementById('prak-clean-drops').classList.add('hidden');
+      document.getElementById('prak-water-result').setAttribute('opacity', '0');
+      document.getElementById('prak-result-label').setAttribute('opacity', '0');
+      document.getElementById('prak-status-text').textContent = 'Status: Belum ada lapisan penyaring di dalam botol.';
+    }
+
+    function narratePraktikum() {
+      speakText('Petunjuk praktikum membuat model penyaringan sederhana. Susun bahan di dalam botol terbalik dari bawah ke atas, yaitu kapas, lalu pasir bersih, lalu kerikil. Kemudian tuangkan air keruh dan amati perubahan kejernihan air pada gelas penampung. Ingat, air hasil praktikum ini tidak boleh diminum.');
+    }
+
+    /* =========================================================================
+       7. MENU 4: GAME (3 PERMAINAN EDUKATIF INTERAKTIF)
+       ========================================================================= */
+    let blitzTimer = null;
+
+    function selectGame(gameNum) {
+      playSFX('click');
+      if (blitzTimer) clearInterval(blitzTimer);
+
+      [1, 2, 3].forEach(n => {
+        const tab = document.getElementById(`tab-game-${n}`);
+        tab.className = n === gameNum
+          ? 'p-4 rounded-2xl border-2 border-gold bg-navy-light text-left transition cursor-pointer'
+          : 'p-4 rounded-2xl border-2 border-ice/20 bg-navy-card hover:border-gold text-left transition cursor-pointer';
+      });
+
+      if (gameNum === 1) renderGame1();
+      if (gameNum === 2) renderGame2();
+      if (gameNum === 3) renderGame3Setup();
+    }
+
+    // --- GAME 1: PASANGKAN ORGAN ---
+    let g1SelectedOrgan = null;
+    let g1Matched = new Set();
+
+    function renderGame1() {
+      g1SelectedOrgan = null;
+      g1Matched = new Set();
+      const organs = [
+        { id: 'ginjal', label: '🫘 Ginjal' },
+        { id: 'kulit', label: '🖐️ Kulit' },
+        { id: 'paru', label: '🫁 Paru-paru' },
+        { id: 'hati', label: '🟤 Hati' }
+      ];
+      const targets = [
+        { id: 'paru', text: 'Mengeluarkan gas CO₂ dan uap air hasil respirasi' },
+        { id: 'hati', text: 'Merombak eritrosit tua menjadi empedu & mengubah amonia menjadi urea' },
+        { id: 'ginjal', text: 'Menyaring darah dan membuang zat sisa berupa urine' },
+        { id: 'kulit', text: 'Mengeluarkan keringat untuk membuang garam & menjaga suhu tubuh' }
+      ];
+
+      document.getElementById('game-arena').innerHTML = `
+        <div class="space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-navy/15 pb-3">
+            <div>
+              <h3 class="font-display font-bold text-xl text-navy">Game 1: Pasangkan Organ Ekskresi</h3>
+              <p class="text-xs sm:text-sm text-slate-600">Klik <strong>Nama Organ</strong> di sebelah kiri, lalu klik <strong>Fungsi & Zat Sisa</strong> yang tepat di sebelah kanan!</p>
+            </div>
+            <span id="g1-progress" class="bg-navy text-gold font-bold px-3.5 py-1.5 rounded-xl text-xs">Terpasang: 0 / 4</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-3" id="g1-left">
+              ${organs.map(o => `
+                <button onclick="pickG1Organ('${o.id}')" id="g1-org-${o.id}" class="w-full p-4 rounded-2xl bg-white hover:bg-turquoise/15 border-2 border-navy/15 font-display font-bold text-base text-navy text-left transition cursor-pointer">
+                  ${o.label}
+                </button>
+              `).join('')}
+            </div>
+            <div class="space-y-3" id="g1-right">
+              ${targets.map(t => `
+                <button onclick="pickG1Target('${t.id}')" id="g1-tgt-${t.id}" class="w-full p-4 rounded-2xl bg-white hover:bg-gold/20 border-2 border-navy/15 text-xs sm:text-sm font-medium text-navy-dark text-left transition cursor-pointer">
+                  ${t.text}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+          <div id="g1-feedback" class="hidden p-4 rounded-2xl font-bold text-sm text-center"></div>
+        </div>
+      `;
+    }
+
+    function pickG1Organ(id) {
+      if (g1Matched.has(id)) return;
+      playSFX('click');
+      g1SelectedOrgan = id;
+      ['ginjal', 'kulit', 'paru', 'hati'].forEach(k => {
+        if (!g1Matched.has(k)) {
+          document.getElementById(`g1-org-${k}`).className = k === id
+            ? 'w-full p-4 rounded-2xl bg-turquoise text-navy-dark border-2 border-navy font-display font-bold text-base text-left transition cursor-pointer'
+            : 'w-full p-4 rounded-2xl bg-white hover:bg-turquoise/15 border-2 border-navy/15 font-display font-bold text-base text-navy text-left transition cursor-pointer';
+        }
+      });
+    }
+
+    function pickG1Target(targetId) {
+      if (!g1SelectedOrgan) {
+        showToast('Pilih salah satu organ di sebelah kiri terlebih dahulu!', 'error');
+        return;
+      }
+      if (g1Matched.has(targetId)) return;
+
+      if (g1SelectedOrgan === targetId) {
+        playSFX('correct');
+        g1Matched.add(targetId);
+        addPoints(15, 0);
+        document.getElementById(`g1-org-${targetId}`).className = 'w-full p-4 rounded-2xl bg-emerald-500 text-white border-2 border-emerald-700 font-display font-bold text-base text-left opacity-80';
+        document.getElementById(`g1-tgt-${targetId}`).className = 'w-full p-4 rounded-2xl bg-emerald-500 text-white border-2 border-emerald-700 text-xs sm:text-sm font-bold text-left opacity-80';
+        g1SelectedOrgan = null;
+        document.getElementById('g1-progress').textContent = `Terpasang: ${g1Matched.size} / 4`;
+
+        if (g1Matched.size === 4) {
+          addPoints(20, 1);
+          document.getElementById('g1-stars').textContent = '★★★';
+          const fb = document.getElementById('g1-feedback');
+          fb.classList.remove('hidden');
+          fb.className = 'p-4 rounded-2xl font-bold text-sm text-center bg-emerald-100 text-emerald-900 border-2 border-emerald-500';
+          fb.innerHTML = '🎉 Hebat! Semua pasangan organ ekskresi tepat! Kamu meraih ★★★ (+1 Bintang Misi).';
+        }
+      } else {
+        playSFX('wrong');
+        showToast('Pasangan belum tepat! Coba cocokkan fungsi yang sesuai.', 'error');
+      }
+    }
+
+    // --- GAME 2: DETEKTIF GINJAL (5 KASUS) ---
+    const detectiveCases = [
+      {
+        caseTitle: 'Kasus #1: Glukosa dalam Urine',
+        clue: 'Hasil uji laboratorium pasien Tn. Budi menunjukkan bahwa urinenya mengandung glukosa (gula). Bagian nefron manakah yang gagal melakukan reabsorpsi glukosa secara sempurna?',
+        options: ['Glomerulus', 'Tubulus Kontortus Proksimal', 'Tubulus Kolektivus', 'Ureter'],
+        ans: 1,
+        note: 'Tubulus kontortus proksimal bertugas menyerap kembali seluruh glukosa pada tahap reabsorpsi.'
+      },
+      {
+        caseTitle: 'Kasus #2: Protein Lolos ke Urine (Albuminuria)',
+        clue: 'Urine seorang pasien terdeteksi mengandung protein albumin dalam jumlah tinggi. Bagian ginjal manakah yang mengalami kerusakan membran penyaring?',
+        options: ['Glomerulus', 'Lengkung Henle', 'Kandung Kemih', 'Pelvis Renalis'],
+        ans: 0,
+        note: 'Glomerulus seharusnya menahan protein berukuran besar agar tidak lolos pada tahap filtrasi.'
+      },
+      {
+        caseTitle: 'Kasus #3: Volume Urine Sangat Banyak',
+        clue: 'Seorang pasien terus-menerus buang air kecil dalam jumlah sangat banyak dan selalu merasa haus karena tubuhnya kekurangan hormon ADH. Gangguan apakah ini?',
+        options: ['Batu Ginjal', 'Diabetes Insipidus', 'Biang Keringat', 'Hepatitis'],
+        ans: 1,
+        note: 'Diabetes insipidus terjadi karena kekurangan hormon ADH yang mengatur penyerapan air di tubulus ginjal.'
+      },
+      {
+        caseTitle: 'Kasus #4: Endapan Kalsium di Rongga Ginjal',
+        clue: 'Pasien mengeluh nyeri pinggang hebat saat buang air kecil karena jarang minum air putih. Hasil rontgen menunjukkan kristal kalsium di pelvis renalis. Apa diagnosisnya?',
+        options: ['Nefritis', 'Batu Ginjal', 'Sirosis', 'Asma'],
+        ans: 1,
+        note: 'Kristalisasi garam kalsium dan asam urat di ginjal menyebabkan penyakit batu ginjal.'
+      },
+      {
+        caseTitle: 'Kasus #5: Penambahan Ion Sisa ke Urine',
+        clue: 'Di laboratorium virtual, terlihat ion H⁺, K⁺, dan sisa obat dipindahkan dari kapiler darah masuk ke dalam saluran nefron membentuk urine sesungguhnya. Proses apakah ini?',
+        options: ['Filtrasi', 'Reabsorpsi', 'Augmentasi', 'Defekasi'],
+        ans: 2,
+        note: 'Augmentasi di tubulus distal menambahkan zat sisa yang tidak dibutuhkan ke dalam urine sekunder.'
+      }
+    ];
+    let g2Idx = 0;
+    let g2Score = 0;
+
+    function renderGame2() {
+      g2Idx = 0;
+      g2Score = 0;
+      showG2Case();
+    }
+
+    function showG2Case() {
+      if (g2Idx >= detectiveCases.length) {
+        const starsEarned = g2Score >= 4 ? 1 : 0;
+        if (starsEarned) addPoints(25, 1);
+        document.getElementById('g2-stars').textContent = g2Score >= 4 ? '★★★' : '★★☆';
+        document.getElementById('game-arena').innerHTML = `
+          <div class="text-center space-y-4 py-6">
+            <div class="text-5xl">🕵️‍♂️🏆</div>
+            <h3 class="font-display font-bold text-2xl text-navy">Investigasi Detektif Selesai!</h3>
+            <p class="text-base">Kamu berhasil memecahkan <strong>${g2Score} dari ${detectiveCases.length}</strong> kasus laboratorium ginjal.</p>
+            <button onclick="renderGame2()" class="bg-turquoise text-navy-dark font-bold px-6 py-3 rounded-2xl cursor-pointer">Mainkan Lagi</button>
+          </div>
+        `;
+        return;
+      }
+
+      const c = detectiveCases[g2Idx];
+      document.getElementById('game-arena').innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b border-navy/15 pb-3">
+            <span class="bg-navy text-gold font-bold px-3 py-1 rounded-xl text-xs">Kasus ${g2Idx + 1} dari ${detectiveCases.length}</span>
+            <span class="text-xs font-bold text-navy">Skor Detektif: ${g2Score * 20}</span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-navy">${c.caseTitle}</h3>
+          <div class="bg-white p-4 rounded-2xl border-l-4 border-gold text-sm sm:text-base leading-relaxed">
+            ${c.clue}
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            ${c.options.map((o, i) => `
+              <button onclick="answerG2(${i})" class="p-3.5 rounded-2xl bg-white hover:bg-turquoise/20 border-2 border-navy/15 font-semibold text-sm text-left transition cursor-pointer">
+                ${String.fromCharCode(65 + i)}. ${o}
+              </button>
+            `).join('')}
+          </div>
+          <div id="g2-fb" class="hidden p-3.5 rounded-2xl text-sm font-medium"></div>
+        </div>
+      `;
+    }
+
+    function answerG2(optIdx) {
+      const c = detectiveCases[g2Idx];
+      const fb = document.getElementById('g2-fb');
+      fb.classList.remove('hidden');
+      if (optIdx === c.ans) {
+        playSFX('correct');
+        g2Score++;
+        addPoints(15, 0);
+        fb.className = 'p-3.5 rounded-2xl text-sm font-bold bg-emerald-100 text-emerald-900 border border-emerald-500';
+        fb.innerHTML = `✅ Analisis Tepat! ${c.note}`;
+      } else {
+        playSFX('wrong');
+        fb.className = 'p-3.5 rounded-2xl text-sm font-bold bg-rose-100 text-rose-900 border border-rose-500';
+        fb.innerHTML = `❌ Kurang tepat. ${c.note}`;
+      }
+      setTimeout(() => {
+        g2Idx++;
+        showG2Case();
+      }, 1700);
+    }
+
+    // --- GAME 3: KUIS KILAT 60 DETIK ---
+    const blitzQuestions = [
+      { q: 'Zat sisa utama yang dikeluarkan oleh paru-paru adalah...', opts: ['Urea', 'CO₂ dan H₂O', 'Bilirubin', 'Asam urat'], a: 1 },
+      { q: 'Tempat terjadinya proses filtrasi darah di ginjal adalah...', opts: ['Glomerulus', 'Tubulus distal', 'Uretra', 'Pelvis'], a: 0 },
+      { q: 'Saluran yang menghubungkan ginjal dengan kandung kemih disebut...', opts: ['Uretra', 'Ureter', 'Nefron', 'Trakea'], a: 1 },
+      { q: 'Kelenjar keringat terletak pada lapisan kulit bagian...', opts: ['Epidermis', 'Dermis', 'Hipodermis', 'Kutikula'], a: 1 },
+      { q: 'Hasil dari tahap reabsorpsi di tubulus proksimal adalah...', opts: ['Urine primer', 'Urine sekunder', 'Urine sesungguhnya', 'Plasma darah'], a: 1 },
+      { q: 'Zat warna empedu yang memberi warna kuning pada urine adalah...', opts: ['Urobilin', 'Melanin', 'Hemoglobin', 'Keratin'], a: 0 },
+      { q: 'Organ ekskresi yang mengubah amonia menjadi urea adalah...', opts: ['Ginjal', 'Hati', 'Paru-paru', 'Kulit'], a: 1 },
+      { q: 'Tahap akhir pembentukan urine sebelum masuk ke tubulus kolektivus adalah...', opts: ['Filtrasi', 'Reabsorpsi', 'Augmentasi', 'Sekresi'], a: 2 },
+      { q: 'Radang pada nefron ginjal akibat infeksi bakteri disebut...', opts: ['Nefritis', 'Sirosis', 'Miliaria', 'Bronkitis'], a: 0 },
+      { q: 'Berapa jumlah ginjal normal pada tubuh manusia?', opts: ['1 buah', '2 buah (sepasang)', '3 buah', '4 buah'], a: 1 }
+    ];
+    let blitzTime = 60;
+    let blitzScore = 0;
+    let blitzQIdx = 0;
+
+    function renderGame3Setup() {
+      document.getElementById('game-arena').innerHTML = `
+        <div class="text-center max-w-lg mx-auto space-y-4 py-4">
+          <div class="text-5xl">⚡⏱️</div>
+          <h3 class="font-display font-bold text-2xl text-navy">Game 3: Kuis Kilat 60 Detik</h3>
+          <p class="text-sm text-slate-700">Pilih tingkat kesulitan kecepatan, lalu jawab soal sebanyak mungkin sebelum waktu habis!</p>
+          <div class="flex justify-center gap-3 pt-2">
+            <button onclick="startBlitzGame(60)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-5 py-3 rounded-2xl cursor-pointer">Mudah (60 dtk)</button>
+            <button onclick="startBlitzGame(45)" class="bg-gold hover:bg-gold-dark text-navy-dark font-bold px-5 py-3 rounded-2xl cursor-pointer">Sedang (45 dtk)</button>
+            <button onclick="startBlitzGame(30)" class="bg-rose-500 hover:bg-rose-600 text-white font-bold px-5 py-3 rounded-2xl cursor-pointer">Sulit (30 dtk)</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function startBlitzGame(seconds) {
+      playSFX('click');
+      blitzTime = seconds;
+      blitzScore = 0;
+      blitzQIdx = 0;
+      blitzQuestions.sort(() => Math.random() - 0.5);
+      renderBlitzQuestion();
+
+      if (blitzTimer) clearInterval(blitzTimer);
+      blitzTimer = setInterval(() => {
+        blitzTime--;
+        const timerEl = document.getElementById('blitz-timer-display');
+        if (timerEl) timerEl.textContent = `${blitzTime}s`;
+        if (blitzTime <= 0) {
+          clearInterval(blitzTimer);
+          finishBlitzGame();
+        }
+      }, 1000);
+    }
+
+    function renderBlitzQuestion() {
+      const item = blitzQuestions[blitzQIdx % blitzQuestions.length];
+      document.getElementById('game-arena').innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center justify-between bg-navy text-white px-4 py-3 rounded-2xl">
+            <span class="font-bold text-sm">Skor Kilat: <strong class="text-gold">${blitzScore}</strong></span>
+            <span class="font-display font-bold text-lg text-turquoise"><i class="fa-solid fa-stopwatch mr-1"></i><span id="blitz-timer-display">${blitzTime}s</span></span>
+          </div>
+          <h4 class="font-display font-bold text-lg sm:text-xl text-navy">${item.q}</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            ${item.opts.map((o, i) => `
+              <button onclick="answerBlitz(${i})" class="p-3.5 rounded-2xl bg-white hover:bg-turquoise/20 border-2 border-navy/15 font-semibold text-sm text-left transition cursor-pointer">
+                ${o}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function answerBlitz(idx) {
+      const item = blitzQuestions[blitzQIdx % blitzQuestions.length];
+      if (idx === item.a) {
+        playSFX('correct');
+        blitzScore += 10;
+        addPoints(10, 0);
+      } else {
+        playSFX('wrong');
+      }
+      blitzQIdx++;
+      renderBlitzQuestion();
+    }
+
+    function finishBlitzGame() {
+      if (blitzScore >= 50) {
+        addPoints(20, 1);
+        document.getElementById('g3-stars').textContent = '★★★';
+      }
+      document.getElementById('game-arena').innerHTML = `
+        <div class="text-center space-y-4 py-6">
+          <div class="text-5xl">🏁⭐</div>
+          <h3 class="font-display font-bold text-2xl text-navy">Waktu Habis!</h3>
+          <p class="text-base">Skor Kuis Kilat kamu: <strong class="text-2xl text-turquoise-dark">${blitzScore}</strong></p>
+          <button onclick="renderGame3Setup()" class="bg-turquoise text-navy-dark font-bold px-6 py-3 rounded-2xl cursor-pointer">Main Lagi</button>
+        </div>
+      `;
+    }
+
+    /* =========================================================================
+       8. MENU 5: LKPD DIGITAL (LOCALSTORAGE AUTO-SAVE)
+       ========================================================================= */
+    const lkpdFields = [
+      'lkpd-nama', 'lkpd-kelas', 'lkpd-kelompok', 'lkpd-tanggal',
+      'lkpd-org1-zat', 'lkpd-org1-fn', 'lkpd-org2-zat', 'lkpd-org2-fn',
+      'lkpd-org3-zat', 'lkpd-org3-fn', 'lkpd-org4-zat', 'lkpd-org4-fn',
+      'lkpd-simulasi', 'lkpd-prak-sebelum', 'lkpd-prak-sesudah',
+      'lkpd-prak-analisis', 'lkpd-kesimpulan', 'lkpd-refleksi'
+    ];
+
+    function saveLKPD(notify = false) {
+      const data = {};
+      lkpdFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) data[id] = el.value;
+      });
+      localStorage.setItem('mpi_ekskresi_lkpd_v1', JSON.stringify(data));
+      if (notify) {
+        playSFX('correct');
+        addPoints(25, 1);
+        showToast('Jawaban LKPD berhasil disimpan di browser (+25 Poin & 1 Bintang)!');
+      }
+    }
+
+    function loadLKPD() {
+      try {
+        const raw = localStorage.getItem('mpi_ekskresi_lkpd_v1');
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        lkpdFields.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && data[id] !== undefined) el.value = data[id];
+        });
+      } catch (e) {
+        console.warn('Gagal memuat LKPD dari localStorage', e);
+      }
+    }
+
+    function resetLKPD() {
+      playSFX('click');
+      lkpdFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      localStorage.removeItem('mpi_ekskresi_lkpd_v1');
+      showToast('Seluruh isian LKPD telah dibersihkan.');
+    }
+
+    /* =========================================================================
+       9. MENU 6: EVALUASI AKHIR (25 SOAL: 15 PG, 5 B/S, 5 MENJODOHKAN)
+       ========================================================================= */
+    const rawEvalBank = [
+      // 15 Soal Pilihan Ganda (type: 'mc')
+      { id: 1, type: 'mc', topic: 'Konsep Ekskresi', q: 'Proses pengeluaran zat-zat sisa metabolisme yang sudah tidak diperlukan lagi oleh tubuh disebut...', options: ['Sekresi', 'Ekskresi', 'Defekasi', 'Ingesti'], ans: 1, exp: 'Ekskresi adalah pembuangan zat sisa metabolisme seluler seperti urine, keringat, dan CO₂.' },
+      { id: 2, type: 'mc', topic: 'Organ Ekskresi', q: 'Berikut ini yang BUKAN termasuk organ sistem ekskresi manusia adalah...', options: ['Ginjal', 'Kulit', 'Usus besar', 'Hati'], ans: 2, exp: 'Usus besar berperan dalam sistem pencernaan (defekasi feses), bukan sistem ekskresi.' },
+      { id: 3, type: 'mc', topic: 'Paru-paru', q: 'Zat sisa metabolisme yang diekskresikan oleh paru-paru saat ekspirasi adalah...', options: ['Urea dan garam', 'Karbon dioksida dan uap air', 'Bilirubin dan urobilin', 'Asam urat dan air'], ans: 1, exp: 'Paru-paru mengeluarkan gas CO₂ dan uap air (H₂O) hasil respirasi sel.' },
+      { id: 4, type: 'mc', topic: 'Hati', q: 'Di dalam hati, sel darah merah (eritrosit) yang sudah tua dirombak menjadi zat warna empedu yaitu...', options: ['Melanin dan keratin', 'Bilirubin dan biliverdin', 'Urea dan amonia', 'Insulin dan glukagon'], ans: 1, exp: 'Hemoglobin dari eritrosit tua dirombak hati menjadi bilirubin dan biliverdin.' },
+      { id: 5, type: 'mc', topic: 'Struktur Ginjal', q: 'Urutan lapisan ginjal dari bagian paling luar menuju ke bagian dalam adalah...', options: ['Medula – Korteks – Pelvis', 'Korteks – Medula – Pelvis', 'Pelvis – Medula – Korteks', 'Korteks – Pelvis – Medula'], ans: 1, exp: 'Lapisan ginjal dari luar ke dalam adalah Korteks (kulit ginjal), Medula (sumsum ginjal), lalu Pelvis renalis.' },
+      { id: 6, type: 'mc', topic: 'Struktur Nefron', q: 'Badan Malpighi pada nefron ginjal tersusun atas dua bagian utama, yaitu...', options: ['Glomerulus dan Kapsula Bowman', 'Tubulus proksimal dan distal', 'Lengkung Henle dan ureter', 'Ureter dan kandung kemih'], ans: 0, exp: 'Badan Malpighi terdiri dari gumpalan kapiler glomerulus yang dikelilingi kapsula Bowman.' },
+      { id: 7, type: 'mc', topic: 'Pembentukan Urine', q: 'Tahap penyaringan darah di glomerulus yang menghasilkan urine primer disebut...', options: ['Augmentasi', 'Reabsorpsi', 'Filtrasi', 'Sekresi'], ans: 2, exp: 'Filtrasi terjadi di glomerulus dan menghasilkan filtrat glomerulus (urine primer).' },
+      { id: 8, type: 'mc', topic: 'Pembentukan Urine', q: 'Penyerapan kembali glukosa dan asam amino pada tahap reabsorpsi berlangsung di...', options: ['Glomerulus', 'Tubulus kontortus proksimal', 'Tubulus kontortus distal', 'Uretra'], ans: 1, exp: 'Reabsorpsi utama terjadi di tubulus kontortus proksimal menghasilkan urine sekunder.' },
+      { id: 9, type: 'mc', topic: 'Pembentukan Urine', q: 'Urutan jalannya urine mulai dari terbentuk di ginjal hingga keluar dari tubuh yang benar adalah...', options: ['Ginjal → Uretra → Kandung kemih → Ureter', 'Ginjal → Ureter → Kandung kemih → Uretra', 'Ginjal → Kandung kemih → Ureter → Uretra', 'Ureter → Ginjal → Uretra → Kandung kemih'], ans: 1, exp: 'Urine mengalir dari ginjal melewati ureter menuju kandung kemih, lalu keluar melalui uretra.' },
+      { id: 10, type: 'mc', topic: 'Kulit', q: 'Selain sebagai alat ekskresi keringat, kulit juga berperan penting dalam mengatur...', options: ['Tekanan darah', 'Suhu tubuh (termoregulasi)', 'Kadar gula darah', 'Pertukaran oksigen'], ans: 1, exp: 'Penguapan keringat membantu menurunkan suhu tubuh agar tetap stabil.' },
+      { id: 11, type: 'mc', topic: 'Gangguan Ekskresi', q: 'Adanya glukosa di dalam urine seseorang mengindikasikan penyakit...', options: ['Diabetes insipidus', 'Diabetes melitus', 'Batu ginjal', 'Biang keringat'], ans: 1, exp: 'Diabetes melitus terjadi karena kekurangan hormon insulin sehingga kadar glukosa darah tinggi dan lolos ke urine.' },
+      { id: 12, type: 'mc', topic: 'Gangguan Ekskresi', q: 'Peradangan pada nefron ginjal akibat infeksi bakteri Streptococcus dikenal sebagai penyakit...', options: ['Nefritis', 'Sirosis', 'Hepatitis', 'Miliaria'], ans: 0, exp: 'Nefritis adalah radang pada nefron yang dapat mengganggu proses penyaringan darah.' },
+      { id: 13, type: 'mc', topic: 'Gangguan Ekskresi', q: 'Kekurangan hormon ADH (Antidiuretic Hormone) menyebabkan gangguan berupa...', options: ['Urine berwarna merah', 'Produksi urine sangat banyak (diabetes insipidus)', 'Terbentuknya batu empedu', 'Kulit bersisik'], ans: 1, exp: 'Hormon ADH membantu penyerapan air di tubulus ginjal; kekurangannya memicu diabetes insipidus.' },
+      { id: 14, type: 'mc', topic: 'Kesehatan Organ', q: 'Kebiasaan berikut yang dapat menjaga kesehatan organ ginjal adalah...', options: ['Sering menahan buang air kecil', 'Minum air putih minimal 2 liter setiap hari', 'Mengonsumsi makanan tinggi garam setiap hari', 'Kurang bergerak dan jarang minum'], ans: 1, exp: 'Air putih yang cukup membantu kerja ginjal melarutkan zat sisa dan mencegah batu ginjal.' },
+      { id: 15, type: 'mc', topic: 'Pembentukan Urine', q: 'Zat yang pada keadaan normal TIDAK ditemukan dalam urine sesungguhnya orang sehat adalah...', options: ['Urea', 'Air', 'Glukosa dan protein', 'Garam mineral'], ans: 2, exp: 'Protein tertahan saat filtrasi, sedangkan glukosa diserap kembali seluruhnya saat reabsorpsi.' },
+
+      // 5 Soal Benar atau Salah (type: 'tf')
+      { id: 16, type: 'tf', topic: 'Hati', q: 'Hati berfungsi mengubah zat amonia yang beracun menjadi urea yang lebih aman untuk dibuang bersama urine.', options: ['Benar', 'Salah'], ans: 0, exp: 'Benar! Hati mendetoksifikasi amonia melalui siklus urea.' },
+      { id: 17, type: 'tf', topic: 'Pembentukan Urine', q: 'Sel darah merah berukuran kecil sehingga mudah lolos melewati saringan glomerulus menuju kapsula Bowman.', options: ['Benar', 'Salah'], ans: 1, exp: 'Salah! Sel darah merah dan protein berukuran besar tidak lolos filtrasi di glomerulus.' },
+      { id: 18, type: 'tf', topic: 'Kulit', q: 'Keringat yang dikeluarkan melalui pori-pori kulit mengandung air, garam mineral (NaCl), dan sedikit urea.', options: ['Benar', 'Salah'], ans: 0, exp: 'Benar! Keringat terutama terdiri dari air dan garam mineral.' },
+      { id: 19, type: 'tf', topic: 'Pembentukan Urine', q: 'Tahap augmentasi berlangsung di tubulus kontortus distal dan menghasilkan urine sesungguhnya.', options: ['Benar', 'Salah'], ans: 0, exp: 'Benar! Augmentasi menambahkan zat sisa ke urine sekunder sehingga menjadi urine sesungguhnya.' },
+      { id: 20, type: 'tf', topic: 'Praktikum', q: 'Model penyaringan menggunakan botol, kerikil, pasir, dan kapas merupakan replika lengkap dari seluruh proses kimiawi di nefron.', options: ['Benar', 'Salah'], ans: 1, exp: 'Salah! Model tersebut hanya analogi penyaringan mekanis (filtrasi) sederhana, bukan replika lengkap nefron.' },
+
+      // 5 Soal Menjodohkan (type: 'match')
+      { id: 21, type: 'match', topic: 'Struktur Nefron', q: 'Jodohkan bagian nefron berikut dengan perannya: GLOMERULUS', options: ['Tempat penyaringan darah (filtrasi)', 'Menyalurkan urine ke kandung kemih', 'Menghasilkan empedu', 'Menyimpan urine sementara'], ans: 0, exp: 'Glomerulus adalah tempat terjadinya filtrasi darah.' },
+      { id: 22, type: 'match', topic: 'Organ Ekskresi', q: 'Jodohkan organ berikut dengan zat ekskresinya: PARU-PARU', options: ['Urine', 'Karbon dioksida (CO₂) dan uap air', 'Keringat', 'Feses'], ans: 1, exp: 'Paru-paru mengekskresikan CO₂ dan H₂O.' },
+      { id: 23, type: 'match', topic: 'Saluran Kemih', q: 'Jodohkan organ berikut dengan fungsinya: KANDUNG KEMIH (VESIKA URINARIA)', options: ['Menyaring darah', 'Menampung urine sementara sebelum dikeluarkan', 'Menghasilkan hormon ADH', 'Menyerap kembali glukosa'], ans: 1, exp: 'Kandung kemih menampung urine sementara sebelum dikeluarkan melalui uretra.' },
+      { id: 24, type: 'match', topic: 'Gangguan Ekskresi', q: 'Jodohkan kelainan berikut dengan penyebabnya: BIANG KERINGAT (MILIARIA)', options: ['Tersumbatnya kelenjar keringat', 'Infeksi bakteri di glomerulus', 'Kekurangan hormon insulin', 'Kerusakan alveolus'], ans: 0, exp: 'Biang keringat disebabkan tersumbatnya saluran kelenjar keringat.' },
+      { id: 25, type: 'match', topic: 'Pembentukan Urine', q: 'Jodohkan istilah berikut dengan pengertiannya: URINE PRIMER', options: ['Hasil filtrasi di glomerulus', 'Hasil reabsorpsi di tubulus proksimal', 'Hasil augmentasi di tubulus distal', 'Cairan empedu dari hati'], ans: 0, exp: 'Urine primer adalah cairan hasil penyaringan (filtrasi) di glomerulus.' }
+    ];
+
+    let activeEvalQuestions = [];
+    let evalInitialized = false;
+    let evalSubmitted = false;
+
+    function initEvaluation(shuffle = false) {
+      evalInitialized = true;
+      evalSubmitted = false;
+      document.getElementById('eval-result-panel').classList.add('hidden');
+      document.getElementById('eval-submit-bar').classList.remove('hidden');
+
+      activeEvalQuestions = [...rawEvalBank];
+      if (shuffle) {
+        playSFX('click');
+        activeEvalQuestions.sort(() => Math.random() - 0.5);
+      }
+
+      const container = document.getElementById('eval-questions-container');
+      container.innerHTML = activeEvalQuestions.map((item, index) => {
+        const typeBadge = item.type === 'mc'
+          ? '<span class="bg-sky-500/20 text-sky-300 px-2.5 py-0.5 rounded-full text-[11px] font-bold">Pilihan Ganda</span>'
+          : item.type === 'tf'
+            ? '<span class="bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full text-[11px] font-bold">Benar / Salah</span>'
+            : '<span class="bg-purple-500/20 text-purple-300 px-2.5 py-0.5 rounded-full text-[11px] font-bold">Menjodohkan</span>';
+
+        return `
+          <div id="eval-card-${index}" class="bg-ice text-navy-dark rounded-3xl p-5 sm:p-6 shadow-lg border-2 border-navy/15 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="bg-navy text-white font-bold px-3 py-1 rounded-xl text-xs">Soal No. ${index + 1}</span>
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-slate-500 font-semibold">${item.topic}</span>
+                ${typeBadge}
+              </div>
+            </div>
+            <p class="font-bold text-sm sm:text-base text-navy-dark leading-relaxed">${item.q}</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              ${item.options.map((opt, oIdx) => `
+                <label class="flex items-center gap-3 p-3 rounded-2xl bg-white hover:bg-turquoise/15 border border-slate-300 cursor-pointer transition text-xs sm:text-sm">
+                  <input type="radio" name="eval-q-${index}" value="${oIdx}" class="w-4 h-4 accent-turquoise" />
+                  <span><strong>${String.fromCharCode(65 + oIdx)}.</strong> ${opt}</span>
+                </label>
+              `).join('')}
+            </div>
+            <div id="eval-exp-${index}" class="hidden p-3.5 rounded-2xl text-xs sm:text-sm font-medium"></div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function submitEvaluation() {
+      if (evalSubmitted) return;
+      let correct = 0;
+      let unanswered = 0;
+      const wrongTopics = new Set();
+
+      activeEvalQuestions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="eval-q-${index}"]:checked`);
+        if (!selected) unanswered++;
+      });
+
+      if (unanswered > 0) {
+        playSFX('wrong');
+        showToast(`Masih ada ${unanswered} soal yang belum dijawab! Silakan lengkapi semua soal.`, 'error');
+        return;
+      }
+
+      evalSubmitted = true;
+      activeEvalQuestions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="eval-q-${index}"]:checked`);
+        const val = parseInt(selected.value, 10);
+        const expBox = document.getElementById(`eval-exp-${index}`);
+        const card = document.getElementById(`eval-card-${index}`);
+        expBox.classList.remove('hidden');
+
+        if (val === item.ans) {
+          correct++;
+          card.classList.add('border-emerald-500');
+          expBox.className = 'p-3.5 rounded-2xl text-xs sm:text-sm font-semibold bg-emerald-100 text-emerald-900 border border-emerald-400';
+          expBox.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> <strong>Benar!</strong> ${item.exp}`;
+        } else {
+          wrongTopics.add(item.topic);
+          card.classList.add('border-rose-500');
+          expBox.className = 'p-3.5 rounded-2xl text-xs sm:text-sm font-semibold bg-rose-100 text-rose-900 border border-rose-400';
+          expBox.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 mr-1"></i> <strong>Kurang tepat.</strong> Jawaban benar: <strong>${item.options[item.ans]}</strong>. ${item.exp}`;
+        }
+      });
+
+      const finalScore = Math.round((correct / activeEvalQuestions.length) * 100);
+      const kkm = parseInt(document.getElementById('kkm-input').value, 10) || 75;
+      const isPassed = finalScore >= kkm;
+
+      playSFX(isPassed ? 'correct' : 'wrong');
+      addPoints(finalScore, isPassed ? 2 : 0);
+
+      document.getElementById('eval-final-score').textContent = finalScore;
+      document.getElementById('eval-correct-count').textContent = correct;
+      document.getElementById('eval-wrong-count').textContent = activeEvalQuestions.length - correct;
+      document.getElementById('eval-kkm-display').textContent = kkm;
+
+      const badge = document.getElementById('eval-status-badge');
+      const rec = document.getElementById('eval-recommendation');
+
+      if (isPassed) {
+        badge.className = 'inline-block px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-emerald-500 text-white';
+        badge.textContent = '🎉 LULUS / TUNTAS KKM';
+        rec.textContent = 'Luar biasa, Penjelajah Sains! Kamu telah menguasai materi Sistem Ekskresi Manusia dengan sangat baik. Silakan periksa pembahasan di bawah untuk memperdalam wawasanmu.';
+      } else {
+        badge.className = 'inline-block px-4 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-rose-500 text-white';
+        badge.textContent = '📚 PERLU PENGAYAAN (BELUM TUNTAS)';
+        const topicsList = Array.from(wrongTopics).join(', ');
+        rec.textContent = `Nilai kamu belum mencapai KKM (${kkm}). Disarankan untuk mempelajari kembali subbab: ${topicsList}, lalu klik tombol Ulangi Evaluasi.`;
+      }
+
+      document.getElementById('eval-result-panel').classList.remove('hidden');
+      document.getElementById('eval-submit-bar').classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* =========================================================================
+       10. INISIALISASI SAAT HALAMAN DIMUAT
+       ========================================================================= */
+    window.onload = function () {
+      loadLKPD();
+      // Set tanggal hari ini secara default jika masih kosong
+      const tglInput = document.getElementById('lkpd-tanggal');
+      if (tglInput && !tglInput.value) {
+        tglInput.value = new Date().toISOString().split('T')[0];
+      }
+      populateVoices();
+    };
+  </script>
+</body>
+</html>
